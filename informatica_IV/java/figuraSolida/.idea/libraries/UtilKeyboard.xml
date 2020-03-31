@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="UtilKeyboard">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../UtilKeyboard/out/artifacts/UtilKeyboard_jar/UtilKeyboard.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

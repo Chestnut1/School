@@ -1,0 +1,21 @@
+<resources>
+    <!--MAIN ACTIVITY-->
+    <string name="app_name">app1v3</string>
+    <string name="saluta">Saluta!</string>
+    <string name="benvenuto">Benvenuto!</string>
+    <string name="gioca">Gioca Alto-Basso</string>
+
+    <!--ALTOBASSO ACTIVITY-->
+    <string name="title_activity_alto_basso">Higher and Lower, THE GAME!</string>
+    <string name="dummy_button">Esci</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="inserisci">Numero: </string>
+    <string name="esito">RESULT:</string>
+
+    <!--ACCELEROMETRO ACTIVITY-->
+    <string name="startAccelerometro">accelerometro</string>
+    <string name="accTitle">TEST \nACCELEROMETRO</string>
+    <string name="x">X: </string>
+    <string name="y">Y: </string>
+    <string name="z">Z: </string>
+</resources>
