@@ -4,6 +4,7 @@
     <string name="saluta">Saluta!</string>
     <string name="benvenuto">Benvenuto!</string>
     <string name="gioca">Gioca Alto-Basso</string>
+    <string name="trisGame">Tetris without YOU!</string>
 
     <!--ALTOBASSO ACTIVITY-->
     <string name="title_activity_alto_basso">Higher and Lower, THE GAME!</string>

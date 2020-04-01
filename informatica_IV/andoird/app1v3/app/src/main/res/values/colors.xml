@@ -10,6 +10,11 @@
     <color name="coloreVerdeFigo">#03fc66</color>
     <color name="darkBackground">#1e211f</color>
     <color name="coloreArancio">#eb6200</color>
+    <color name="coloreBianco">#ffffff</color>
 
     <color name="black_overlay">#66000000</color>
+
+    <!--TRIS GAME COLORS-->
+    <color name="rossoTris">#ff0048</color>
+    <color name="verdeTris">#00ff77</color>
 </resources>
