@@ -39,19 +39,25 @@
                     android:id="@+id/button1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/darkBackground"/>
+                    android:backgroundTint="@color/darkBackground"
+                    android:text="@string/buttonContent"
+                    android:textColor="@color/coloreBianco"/>
 
                 <Button
                     android:id="@+id/button2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/darkBackground"/>
+                    android:backgroundTint="@color/darkBackground"
+                    android:text="@string/buttonContent"
+                    android:textColor="@color/coloreBianco"/>
 
                 <Button
                     android:id="@+id/button3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/darkBackground"/>
+                    android:backgroundTint="@color/darkBackground"
+                    android:text="@string/buttonContent"
+                    android:textColor="@color/coloreBianco"/>
             </TableRow>
 
             <TableRow
@@ -60,22 +66,28 @@
                 android:gravity="center">
 
                 <Button
-                    android:id="@+id/butto4"
+                    android:id="@+id/button4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/darkBackground"/>
+                    android:backgroundTint="@color/darkBackground"
+                    android:text="@string/buttonContent"
+                    android:textColor="@color/coloreBianco"/>
 
                 <Button
                     android:id="@+id/button5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/darkBackground"/>
+                    android:backgroundTint="@color/darkBackground"
+                    android:text="@string/buttonContent"
+                    android:textColor="@color/coloreBianco"/>
 
                 <Button
                     android:id="@+id/button6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/darkBackground"/>
+                    android:backgroundTint="@color/darkBackground"
+                    android:text="@string/buttonContent"
+                    android:textColor="@color/coloreBianco"/>
             </TableRow>
 
             <TableRow
@@ -87,19 +99,25 @@
                     android:id="@+id/button7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/darkBackground"/>
+                    android:backgroundTint="@color/darkBackground"
+                    android:text="@string/buttonContent"
+                    android:textColor="@color/coloreBianco"/>
 
                 <Button
                     android:id="@+id/button8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/darkBackground"/>
+                    android:backgroundTint="@color/darkBackground"
+                    android:text="@string/buttonContent"
+                    android:textColor="@color/coloreBianco"/>
 
                 <Button
                     android:id="@+id/button9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/darkBackground"/>
+                    android:backgroundTint="@color/darkBackground"
+                    android:text="@string/buttonContent"
+                    android:textColor="@color/coloreBianco"/>
             </TableRow>
 
         </TableLayout>

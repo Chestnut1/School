@@ -19,4 +19,7 @@
     <string name="x">X: </string>
     <string name="y">Y: </string>
     <string name="z">Z: </string>
+
+    <!--TRIS ACTIVITY-->
+    <string name="buttonContent">-</string>
 </resources>
