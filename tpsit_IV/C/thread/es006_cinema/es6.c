@@ -66,7 +66,7 @@ void *casse(void* argv){
 int main(int argv, char **argc){
     pthread_t clienti[20];
     int i;  //contatore
-
+    
     //apro cinema
     for(i=3; i>0; i--){
         printf("Il cinema apre tra %d...\n" , i);
@@ -75,6 +75,7 @@ int main(int argv, char **argc){
     printf("\n\tCINEMA APERTO\n\n");
 
     //creo tutti i thread (clienti)
+    srand(time(NULL));
     for(i=0; i<20; i++){
         pthread_create(&clienti[i], NULL, (void *)casse, NULL);
     }
