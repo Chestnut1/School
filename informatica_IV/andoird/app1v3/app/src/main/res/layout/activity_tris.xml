@@ -7,22 +7,21 @@
     tools:context=".TrisActivity">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/darkBackground">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/lblTitolo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="20sp"
             android:text="TextView"
             android:textAlignment="center"
+            android:textColor="@color/darkBackground"
             android:textSize="30sp"
-            android:textColor="@color/coloreBianco"
-            android:textStyle="bold"
-            android:padding="20sp"
-            />
+            android:textStyle="bold" />
 
         <TableLayout
             android:id="@+id/grid"
@@ -39,25 +38,22 @@
                     android:id="@+id/btn00"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/darkBackground"
                     android:text="@string/buttonContent"
-                    android:textColor="@color/coloreBianco"/>
+                    android:textColor="@color/coloreBianco" />
 
                 <Button
                     android:id="@+id/btn01"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/darkBackground"
                     android:text="@string/buttonContent"
-                    android:textColor="@color/coloreBianco"/>
+                    android:textColor="@color/coloreBianco" />
 
                 <Button
                     android:id="@+id/btn02"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/darkBackground"
                     android:text="@string/buttonContent"
-                    android:textColor="@color/coloreBianco"/>
+                    android:textColor="@color/coloreBianco" />
             </TableRow>
 
             <TableRow
@@ -69,25 +65,22 @@
                     android:id="@+id/btn10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/darkBackground"
                     android:text="@string/buttonContent"
-                    android:textColor="@color/coloreBianco"/>
+                    android:textColor="@color/coloreBianco" />
 
                 <Button
                     android:id="@+id/btn11"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/darkBackground"
                     android:text="@string/buttonContent"
-                    android:textColor="@color/coloreBianco"/>
+                    android:textColor="@color/coloreBianco" />
 
                 <Button
                     android:id="@+id/btn12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/darkBackground"
                     android:text="@string/buttonContent"
-                    android:textColor="@color/coloreBianco"/>
+                    android:textColor="@color/coloreBianco" />
             </TableRow>
 
             <TableRow
@@ -99,27 +92,37 @@
                     android:id="@+id/btn20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/darkBackground"
                     android:text="@string/buttonContent"
-                    android:textColor="@color/coloreBianco"/>
+                    android:textColor="@color/coloreBianco" />
 
                 <Button
                     android:id="@+id/btn21"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/darkBackground"
                     android:text="@string/buttonContent"
-                    android:textColor="@color/coloreBianco"/>
+                    android:textColor="@color/coloreBianco" />
 
                 <Button
                     android:id="@+id/btn22"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/darkBackground"
                     android:text="@string/buttonContent"
-                    android:textColor="@color/coloreBianco"/>
+                    android:textColor="@color/coloreBianco" />
             </TableRow>
 
         </TableLayout>
+
     </LinearLayout>
+
+    <Button
+        android:id="@+id/resetButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        android:paddingBottom="100sp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

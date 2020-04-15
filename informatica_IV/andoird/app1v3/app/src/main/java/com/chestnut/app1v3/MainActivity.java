@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "Main Activity";
-    private Button btnSal, btnAltoBasso, btnAcc, btnTris;
+    private Button btnSal, btnAltoBasso, btnAcc, btnTris, btnTrisVsPc;
     private TextView txtSal;
 
     private int switchSal = 0;
@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         btnAltoBasso = findViewById(R.id.btnAltoBasso);
         btnAcc = findViewById(R.id.btnAccelerometro);
         btnTris = findViewById(R.id.btntris);
+        btnTrisVsPc = findViewById(R.id.btnTrisVsPc);
     }
     void setupEventListener(){
         btnSal.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +72,14 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this,TrisActivity.class);
                 intent.putExtra("g1","Marco");
                 intent.putExtra("g2", "Luca");
+                startActivity(intent);
+            }
+        });
+
+        btnTrisVsPc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, TrisVsPcActivity.class);
                 startActivity(intent);
             }
         });
