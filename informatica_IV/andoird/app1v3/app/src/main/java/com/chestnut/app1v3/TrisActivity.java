@@ -7,147 +7,164 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Random;
-
 public class TrisActivity extends AppCompatActivity {
-    private static final String TAg = "TrisActivity";
+    private static final String TAG = "TrisActivity";
 
-    private TextView title;
-    private String p1, p2;  //players
-    private boolean currentPlayer;
-    public int m[][];   //matrice interi
+    public int m[][]; // matrice interi
+    private boolean g1; // true o false
 
-    Button b1,b2,b3,
-           b4,b5,b6,
-           b7,b8,b9;
-
-    //Button b[3][3];
+    private TextView lblTit;
+    Button b[][];
+    Button btnReset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tris);
 
+        Log.e(TAG, "Activity avviata con successo");
 
-        //BINDING
-        bindCompents();
+        // binding
+        bindComponents();
+        // leggere parametri da MainActivity
+        Intent intent;
+        intent = getIntent();
+        // in stringa -> intent.getStringExtra("g1");
+        lblTit.setText(intent.getStringExtra("g1") + " VS " + intent.getStringExtra("g2"));
 
-        //read elements from .puExtra()
-        Intent intent = getIntent();
-        p1 = intent.getStringExtra("g1");
-        p2 = intent.getStringExtra("g2");
+        // init giocatore
+        g1 = true;
+        // init matrice
+        m = new int[3][3];
+        for(int i=0; i<3; i++){
+            for(int j=0; j<3; j++){
+                m[i][j] = 0;
+            }
+        }
 
-        //initialize game
-        title.setText(p1 + " VS " + p2);    //select player names
-        currentPlayer = true;
-        initMatrix(m);
+        // possibilità 2
+        for(int i=0; i<3; i++){
+            for(int j=0; j<3; j++){
+                b[i][j].setTransitionName("btn_" + i + "_" + j);
+                b[i][j].setOnClickListener(new myListener());
+            }
+        }
+        btnReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resetGame();
+            }
+        });
 
-        //LISTENER
-        b1.setOnClickListener(new myListener()); b1.setTransitionName("btn_0_0");
-        b2.setOnClickListener(new myListener()); b2.setTransitionName("btn_0_1");
-        b3.setOnClickListener(new myListener()); b3.setTransitionName("btn_0_2");
-        b4.setOnClickListener(new myListener()); b4.setTransitionName("btn_1_0");
-        b5.setOnClickListener(new myListener()); b5.setTransitionName("btn_1_1");
-        b6.setOnClickListener(new myListener()); b6.setTransitionName("btn_1_2");
-        b7.setOnClickListener(new myListener()); b7.setTransitionName("btn_2_0");
-        b8.setOnClickListener(new myListener()); b8.setTransitionName("btn_2_1");
-        b9.setOnClickListener(new myListener()); b9.setTransitionName("btn_2_2");
     }
 
-    public void bindCompents(){
-        title = findViewById(R.id.lblTitolo);
-        b1 = findViewById(R.id.button1);
-        b2 = findViewById(R.id.button2);
-        b3 = findViewById(R.id.button3);
-        b4 = findViewById(R.id.button4);
-        b5 = findViewById(R.id.button5);
-        b6 = findViewById(R.id.button6);
-        b7 = findViewById(R.id.button7);
-        b8 = findViewById(R.id.button8);
-        b9 = findViewById(R.id.button9);
+    private void bindComponents(){
+        lblTit = findViewById(R.id.lblTitolo);
+        b = new Button[3][3];
+        btnReset = findViewById(R.id.resetButton);
+        b[0][0] = findViewById(R.id.btn00); //b[0][0].setTransitionName("btn_0_0");
+        b[0][1] = findViewById(R.id.btn01); //b[0][1].setTransitionName("btn_0_1");
+        b[0][2] = findViewById(R.id.btn02); //b[0][2].setTransitionName("btn_0_2");
+        b[1][0] = findViewById(R.id.btn10); //b[1][0].setTransitionName("btn_1_0");
+        b[1][1] = findViewById(R.id.btn11); //b[1][1].setTransitionName("btn_1_1");
+        b[1][2] = findViewById(R.id.btn12); //b[1][2].setTransitionName("btn_1_2");
+        b[2][0] = findViewById(R.id.btn20); //b[2][0].setTransitionName("btn_2_0");
+        b[2][1] = findViewById(R.id.btn21); //b[2][1].setTransitionName("btn_2_1");
+        b[2][2] = findViewById(R.id.btn22); //b[2][2].setTransitionName("btn_2_2");
     }
 
-    public void initMatrix(int m[][]){
-        m = new int[3][3];      //initialize matrix ti 0
-        for(int r = 0; r<3;r++){
-            for(int c=0;c<3;c++){
-                m[r][c] = 0;
+    void vince(String g){
+        Toast.makeText(this, g, Toast.LENGTH_LONG).show();
+    }
+
+    void resetGame(){
+        for(int i=0; i<3; i++){
+            for(int j=0; j<3; j++){
+                b[i][j].setEnabled(true);
+                b[i][j].setBackgroundResource(R.color.coloreBianco);
+                m[i][j] = 0;
             }
         }
     }
 
-    public class myListener implements View.OnClickListener {
+    void bloccaPulsanti(){
+        // POSSIBILITA' 2
+        for(int i=0; i<3; i++){
+            for(int j=0; j<3; j++){
+                b[i][j].setEnabled(false);
+            }
+        }
+    }
+
+    class myListener implements View.OnClickListener{
         private static final String TAG = "ClassListener";
-
         @Override
-        public void onClick(View v) {   // v contains the object who triggered the functio
-            int x,y;
-            boolean win = false;
+        public void onClick(View v) {
+            int x, y;
+            boolean vittoria;
+            // 1. rintracciare pulsante chiamante
+            Button bL = (Button) v;
+            Log.i(TAG, String.valueOf(bL.getTransitionName()));
+            // 2. assegno a x y le coordinate lette dal Button
+            x = Integer.parseInt(bL.getTransitionName().split("_")[1]);
+            y = Integer.parseInt(bL.getTransitionName().split("_")[2]);
 
-            Log.e(TAG, "bottone cliccato");
-            //getting pressed button id/transition name
-            Button buttonPressed = (Button) v;
-            Log.i(TAG, String.valueOf(buttonPressed.getTransitionName()));
-            x = Integer.parseInt(buttonPressed.getTransitionName().split("_")[1]);
-            y = Integer.parseInt(buttonPressed.getTransitionName().split("_")[2]);
-
-            if(currentPlayer){
+            if(g1){
+                bL.setBackgroundResource(R.color.verdeTris);
                 m[x][y] = 1;
-                currentPlayer = !currentPlayer;
-                buttonPressed.setBackgroundResource(R.color.verdeTris);
+                g1 = false;
             }else{
+                bL.setBackgroundResource(R.color.rossoTris);
                 m[x][y] = 2;
-                currentPlayer = !currentPlayer;
-                buttonPressed.setBackgroundResource(R.color.rossoTris);
+                g1 = true;
             }
+            bL.setEnabled(false); // disabilitiamo il click del pulsante
 
-            buttonPressed.setEnabled(false);    //turn off click option of the button
 
-            //CHECK VICTORY
-            if(m[0][y] == m[x][y] && m[1][y] == m[x][y] && m[2][y] == m[x][y]){         //vertical chek
-                win = true;
-            }else if(m[x][0] == m[x][y] && m[x][1]==m[x][y] && m[x][2] == m[x][y]){     //orizontal cheack
-                win = true;
-            }else if(m[0][0] == m[x][y] && m[1][1] == m[x][y] && m[2][2] == m[x][y]){ //primary diagonal chek
-                win = true;
-            }else if(m[0][2] == m[x][y] && m[1][1] == m[x][y] && m[2][0] == m[x][y]){ //secondary diagonal check
-                win = true;
+            // stampo matrice
+            for(int i=0; i<3; i++){
+                Log.d("", String.valueOf(m[i][0]) + " " + String.valueOf(m[i][1]) + " " + String.valueOf(m[i][2]));
             }
+            // -------
 
-            if(win){
-                if(!currentPlayer){
-                    title.setText(p1 + "WIN THE GAME!");
-                    winning(p1);
+            vittoria = false;
+            // Controllo Vittoria
+
+            // VERTICALE
+            if(m[0][y] == m[x][y] && m[1][y] == m[x][y] && m[2][y] == m[x][y]){
+                // vittoria verticale
+                vittoria = true;
+            }else{
+                // ORIZZONTALE
+                if(m[x][0] == m[x][y] && m[x][1] == m[x][y] && m[x][2] == m[x][y]){
+                    // vittoria orizzontale
+                    vittoria = true;
                 }else{
-                    title.setText(p2 + "WIN THE GAME!");
-                    winning(p2);
+                    // Diagonale principale
+                    if(m[0][0] == m[x][y] && m[1][1] == m[x][y] && m[2][2] == m[x][y]){
+                        // Vittoria diagonale p.
+                        vittoria = true;
+                    }else if(m[0][2] == m[x][y] && m[1][1] == m[x][y] && m[2][0] == m[x][y]){// Diagonale secondaria
+                        // Vittoria diagonale s.
+                        vittoria = true;
+                    }
                 }
-                blockButtons();
             }
-
+            if(vittoria){
+                if(!g1){ // ho già invertito giocatore 1 con giocatore 2
+                    Log.d(TAG, "VINCE GIOCATORE 1");
+                    vince("VINCE GIOCATORE 1");
+                }else{
+                    Log.d(TAG, "VINCE GIOCATORE 2");
+                    vince("VINCE GIOCATORE 2");
+                }
+                bloccaPulsanti();
+            }
         }
     }
 
-    public void winning(String winner){
-        Toast.makeText(this, winner, Toast.LENGTH_LONG).show();
-    }
-
-    public void blockButtons(){
-        //game finished, block every buttons
-        b1.setEnabled(false);
-        b2.setEnabled(false);
-        b3.setEnabled(false);
-        b4.setEnabled(false);
-        b5.setEnabled(false);
-        b6.setEnabled(false);
-        b7.setEnabled(false);
-        b8.setEnabled(false);
-        b9.setEnabled(false);
-
-    }
 
 }

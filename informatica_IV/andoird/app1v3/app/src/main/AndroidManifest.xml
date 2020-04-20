@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TrisActivity"></activity>
+        <activity android:name=".TrisVsPcActivity"></activity>
+        <activity android:name=".TrisActivity2" />
+        <activity android:name=".Forza4Activity" />
+        <activity android:name=".TrisActivity" />
         <activity android:name=".AccActivity" />
         <activity
             android:name=".AltoBassoActivity"

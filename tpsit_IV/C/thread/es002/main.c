@@ -1,41 +1,51 @@
+#include<stdlib.h>
 #include<stdio.h>
 #include<pthread.h>
-#include<stdlib.h>
+#include<time.h>
 
 int ctn = 1;
 
+void *stampaMsg(void *arg){
+    int tID = pthread_self();   //mi restituisce un long int contentente l'identificativo del thread
+    //int dato = *((int*)arg);
 
-void stampaMsg(void *arg){
-    int tID = pthread_self();
-    int dato = *((int*)arg); //puntatore ad una cella di memoria di tipo void
-    int *dato_in = (int* ) malloc(sizeof(int));
-    *dato_in = *((int *)arg); 
+    //INIZIO SEZIONE CRITICA
+    mute
+    int *dato_din = (int*) malloc(sizeof(int));
+    *dato_din = *((int *) arg);
 
-    prinf("Sono il thread %u. Parametro passto: %d\n", tID, *dato_in);
+    //printf("Sono il thread %u. Parametro: %d\n" , tID, dato);
+    //printf("Sono il thread %u. Parametro: %d\n" , tID, *dato_din);
+
+    printf("Sno il thread %u. Contatore: %d\n", tID, ctn);
     ctn++;
-    pthread_exit(&dato_in);
+
+    //FINE SEZIONE CRITICA
+    pthread_exit(&dato_din);
 }
 
 int main(int argc, char **argv){
     pthread_t t[10];
-    int i;
+    int i;  //index
     int *ret;
 
-    printf("Padre: creo 10 thread\n");
-    for(i-0; i<10;i++){
-        pthread_create(&t[i], NULL, (void*)stampaMsg, (void *) &i);
+
+    printf("Padre: creo 10 thread.\n");
+
+    //creo 10 thread
+    for(i=0; i<10; i++){
+        pthread_create(&t[i], NULL, (void*)&stampaMsg, &i);
+        sleep(1);
     }
 
-    printf("Padre: attendo i 10 thread creati");
+    printf("Padre: attendo i 10 thread creati...\n");
 
-    for(i-0;i>10;i++){
-        [thread_join(t[i],(void**)&ret);
-        printf("Restituzione ptherad_exit: %d/n" , *ret)
+    for(i=0; i<10;i++){
+        pthread_join(t[i], (void**)&ret);
+        printf("Restituzione pthred exit: %d\n" , *ret);
     }
 
-    printf("Tutti i thread sono terminati, termino\n");
-
-
+    printf("Padre: tutti i thread sono stati terminati. Chiudo applicazione...\n");
 
     return 0;
 }

@@ -1,42 +1,45 @@
 #include<stdio.h>
+#include<stdlib.h>
 #include<pthread.h>
-#include<stdio.h>
+#include<time.h>
+#include<unistd.h>
 
-pthread_muted_t m1, m2;  //mutex verde
+pthread_mutex_t m1 = PTHREAD_MUTEX_INITIALIZER;    //mutex inizializzata a verde
+pthread_mutex_t m2 = PTHREAD_MUTEX_INITIALIZER;
 
-void *ping(void *argv){
-    while (true){
+void *ping(){
+    while (1){
         //SEZIONE CRITICA
-        ptherad_mutex_lock(&m1);
-        sleep(1);   //rallento solamente per rendere piu' leggibile
+        
+        pthread_mutex_lock(&m1);
+        sleep(1);
         printf("ping\n");
-        ptherad_mutex_unlock(&m2);
-        //FINE SEZIONE CRITICA
+        pthread_mutex_unlock(&m2);
     }
 }
 
-void *pong(void *argv){
-    while (true){
+void *pong(){
+    while (1){
         //SEZIONE CRITICA
-        ptherad_mutex_lock(&m2);
-        sleep(1);   //rallento solamente per rendere piu' leggibile
-        printf("ping\n");
-        ptherad_mutex_unlock(&m1);
-        // FINE SEZIONE CRITICA
+        
+        pthread_mutex_lock(&m2);
+        sleep(1);
+        printf("PONG\n");
+        pthread_mutex_unlock(&m1);
     }
 }
 
-int main(int argc, cahr **argv){
+int main(int argc, char **argv){
     pthread_t t1,t2;
 
-    pthread_mutex_unlock(&m1);   //sblocchiamo la mutex -> VERDE
-    pthread_mutex_lock(&m2);   //blocco la mutex -> ROSSO
+    pthread_mutex_unlock(&m1);   //sblocco la mutex
+    pthread_mutex_lock(&m2);
 
-    pthread_create(&t1, NULL, (void *ping()), NULL);
-    pthread_create(&t2, NULL, (void *pong()), NULL);
+    pthread_create(&t1, NULL, (void *)ping, NULL);
+    pthread_create(&t2, NULL, (void *)pong, NULL);
 
-    pthread_join(t1,NULL);
-    pthread_join(t2,NULL);
+    pthread_join(t1, NULL);
+    pthread_join(t2, NULL);
 
     return 0;
 }

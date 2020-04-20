@@ -4,7 +4,10 @@
     <string name="saluta">Saluta!</string>
     <string name="benvenuto">Benvenuto!</string>
     <string name="gioca">Gioca Alto-Basso</string>
-    <string name="trisGame">Tetris without YOU!</string>
+    <string name="trisGame">TRIS</string>
+    <string name="buttonForza4">FORZA 4</string>
+
+    <string name="trisVsPc">TRIS VS PC</string>
 
     <!--ALTOBASSO ACTIVITY-->
     <string name="title_activity_alto_basso">Higher and Lower, THE GAME!</string>
@@ -22,4 +25,8 @@
 
     <!--TRIS ACTIVITY-->
     <string name="buttonContent">-</string>
+    <string name="reset">RESET GAME</string>
+
+    <!-- FORZA 4 ACTIVITY -->
+    <string name="titleForza4">Tocca a: G1</string>
 </resources>
