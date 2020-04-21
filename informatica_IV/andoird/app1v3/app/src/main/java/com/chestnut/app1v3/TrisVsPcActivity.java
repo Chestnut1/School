@@ -18,6 +18,7 @@ public class TrisVsPcActivity extends AppCompatActivity {
 
     private TextView lblTit;
     Button b[][];
+    Button btnReset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,12 @@ public class TrisVsPcActivity extends AppCompatActivity {
                 b[i][j].setOnClickListener(new myListener());
             }
         }
+        btnReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resetGame();
+            }
+        });
     }
 
     private void bindComponents(){
@@ -59,29 +66,11 @@ public class TrisVsPcActivity extends AppCompatActivity {
         b[2][0] = findViewById(R.id.btn20); //b[2][0].setTransitionName("btn_2_0");
         b[2][1] = findViewById(R.id.btn21); //b[2][1].setTransitionName("btn_2_1");
         b[2][2] = findViewById(R.id.btn22); //b[2][2].setTransitionName("btn_2_2");
+        btnReset = findViewById(R.id.resetButton);
     }
 
     void vince(String g){
         Toast.makeText(this, g, Toast.LENGTH_LONG).show();
-    }
-
-    void resetGame(){
-        for(int i=0; i<3; i++){
-            for(int j=0; j<3; j++){
-                b[i][j].setEnabled(true);
-                b[i][j].setBackgroundResource(R.color.coloreBianco);
-                m[i][j] = 0;
-            }
-        }
-    }
-
-    void bloccaPulsanti(){
-        // POSSIBILITA' 2
-        for(int i=0; i<3; i++){
-            for(int j=0; j<3; j++){
-                b[i][j].setEnabled(false);
-            }
-        }
     }
 
     class myListener implements View.OnClickListener{
@@ -103,29 +92,7 @@ public class TrisVsPcActivity extends AppCompatActivity {
             g1 = false;
             bL.setEnabled(false); // disabilitiamo il click del pulsante
 
-            vittoria = false;
-            // VERTICALE
-            if(m[0][y] == m[x][y] && m[1][y] == m[x][y] && m[2][y] == m[x][y]){
-                // vittoria verticale
-                vittoria = true;
-            }else{
-                // ORIZZONTALE
-                if(m[x][0] == m[x][y] && m[x][1] == m[x][y] && m[x][2] == m[x][y]){
-                    // vittoria orizzontale
-                    vittoria = true;
-                }else{
-                    // Diagonale principale
-                    if(m[0][0] == m[x][y] && m[1][1] == m[x][y] && m[2][2] == m[x][y]){
-                        // Vittoria diagonale p.
-                        vittoria = true;
-                    }else if(m[0][2] == m[x][y] && m[1][1] == m[x][y] && m[2][0] == m[x][y]){// Diagonale secondaria
-                        // Vittoria diagonale s.
-                        vittoria = true;
-                    }
-                }
-            }
-
-            if(vittoria){
+            if(checkWin(x,y)){
                 if(!g1){ // ho già invertito giocatore 1 con giocatore 2
                     Log.d(TAG, "VINCE GIOCATORE 1");
                     vince("VINCE GIOCATORE 1");
@@ -146,38 +113,13 @@ public class TrisVsPcActivity extends AppCompatActivity {
             b[x][y].setEnabled(false);
             g1 = true;
 
-            vittoria = false;
-            // VERTICALE
-            if(m[0][y] == m[x][y] && m[1][y] == m[x][y] && m[2][y] == m[x][y]){
-                // vittoria verticale
-                vittoria = true;
-            }else{
-                // ORIZZONTALE
-                if(m[x][0] == m[x][y] && m[x][1] == m[x][y] && m[x][2] == m[x][y]){
-                    // vittoria orizzontale
-                    vittoria = true;
-                }else{
-                    // Diagonale principale
-                    if(m[0][0] == m[x][y] && m[1][1] == m[x][y] && m[2][2] == m[x][y]){
-                        // Vittoria diagonale p.
-                        vittoria = true;
-                    }else if(m[0][2] == m[x][y] && m[1][1] == m[x][y] && m[2][0] == m[x][y]){// Diagonale secondaria
-                        // Vittoria diagonale s.
-                        vittoria = true;
-                    }
-                }
-            }
-
-
             // stampo matrice
             for(int i=0; i<3; i++){
                 Log.d("", String.valueOf(m[i][0]) + " " + String.valueOf(m[i][1]) + " " + String.valueOf(m[i][2]));
             }
             // -------
 
-
-
-            if(vittoria){
+            if(checkWin(x,y)){
                 if(!g1){ // ho già invertito giocatore 1 con giocatore 2
                     Log.d(TAG, "VINCE GIOCATORE 1");
                     vince("VINCE GIOCATORE 1");
@@ -186,6 +128,47 @@ public class TrisVsPcActivity extends AppCompatActivity {
                     vince("VINCE GIOCATORE 2");
                 }
                 bloccaPulsanti();
+            }
+        }
+    }
+
+    boolean checkWin(int x, int y){
+        if(m[0][y] == m[x][y] && m[1][y] == m[x][y] && m[2][y] == m[x][y]){
+            // vittoria verticale
+            return true;
+        }else{
+            // ORIZZONTALE
+            if(m[x][0] == m[x][y] && m[x][1] == m[x][y] && m[x][2] == m[x][y]){
+                // vittoria orizzontale
+                return true;
+            }else{
+                // Diagonale principale
+                if(m[0][0] == m[x][y] && m[1][1] == m[x][y] && m[2][2] == m[x][y]){
+                    // Vittoria diagonale p.
+                }else if(m[0][2] == m[x][y] && m[1][1] == m[x][y] && m[2][0] == m[x][y]){// Diagonale secondaria
+                    // Vittoria diagonale s.
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    void bloccaPulsanti(){
+        // POSSIBILITA' 2
+        for(int i=0; i<3; i++){
+            for(int j=0; j<3; j++){
+                b[i][j].setEnabled(false);
+            }
+        }
+    }
+
+    void resetGame(){
+        for(int i=0; i<3; i++){
+            for(int j=0; j<3; j++){
+                b[i][j].setEnabled(true);
+                b[i][j].setBackgroundResource(R.color.coloreBianco);
+                m[i][j] = 0;
             }
         }
     }
