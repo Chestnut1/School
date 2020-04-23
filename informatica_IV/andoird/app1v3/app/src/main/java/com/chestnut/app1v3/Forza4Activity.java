@@ -11,19 +11,21 @@ import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
+import java.util.Vector;
+
 public class Forza4Activity extends AppCompatActivity {
     private static final String TAG = "Forza 4 acrtivity";
 
     private final int ROWS = 6;
     private final int COLS = 7;
-    private boolean player = true;  //true -> 1, false -> 2
+    private int player = 1;  //true -> 1, false -> 2
 
     int m[][];
     Button btn[][];
 
+    Vector<Button> vBtn;
 
     TableRow tb0, tb1, tb2, tb3, tb4, tb5;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,7 @@ public class Forza4Activity extends AppCompatActivity {
 
     void bindCOmponents(){
         btn = new Button[ROWS][COLS];
+        vBtn = new Vector<Button>();
 
         tb0 = findViewById(R.id.tbR0);
         tb1 = findViewById(R.id.tbR1);
@@ -63,6 +66,7 @@ public class Forza4Activity extends AppCompatActivity {
             btn.setLayoutParams(new ViewGroup.LayoutParams(30, 30));
             btn.setTransitionName("btn_0_"+i);
             btn.setOnClickListener(new myListener());
+            vBtn = new Vector<Button>();
             tb0.addView(btn);
         }
         for(int i=0; i<COLS; i++){
@@ -70,6 +74,7 @@ public class Forza4Activity extends AppCompatActivity {
             btn.setLayoutParams(new ViewGroup.LayoutParams(30, 30));
             btn.setTransitionName("btn_1_"+i);
             btn.setOnClickListener(new myListener());
+            vBtn = new Vector<Button>();
             tb1.addView(btn);
         }
         for(int i=0; i<COLS; i++){
@@ -77,6 +82,7 @@ public class Forza4Activity extends AppCompatActivity {
             btn.setLayoutParams(new ViewGroup.LayoutParams(30, 30));
             btn.setTransitionName("btn_2_"+i);
             btn.setOnClickListener(new myListener());
+            vBtn = new Vector<Button>();
             tb2.addView(btn);
         }
         for(int i=0; i<COLS; i++){
@@ -84,6 +90,7 @@ public class Forza4Activity extends AppCompatActivity {
             btn.setLayoutParams(new ViewGroup.LayoutParams(30, 30));
             btn.setTransitionName("btn_3_"+i);
             btn.setOnClickListener(new myListener());
+            vBtn = new Vector<Button>();
             tb3.addView(btn);
         }
         for(int i=0; i<COLS; i++){
@@ -91,6 +98,7 @@ public class Forza4Activity extends AppCompatActivity {
             btn.setLayoutParams(new ViewGroup.LayoutParams(30, 30));
             btn.setTransitionName("btn_4_"+i);
             btn.setOnClickListener(new myListener());
+            vBtn = new Vector<Button>();
             tb4.addView(btn);
         }
         for(int i=0; i<COLS; i++){
@@ -98,6 +106,7 @@ public class Forza4Activity extends AppCompatActivity {
             btn.setLayoutParams(new ViewGroup.LayoutParams(50, 30));
             btn.setTransitionName("btn_5_"+i);
             btn.setOnClickListener(new myListener());
+            vBtn = new Vector<Button>();
             tb5.addView(btn);
         }
     }
@@ -116,7 +125,119 @@ public class Forza4Activity extends AppCompatActivity {
         }
 
         private void inserisciMoneta(int x, int y){
+            boolean trovato = false;
+            while(x<ROWS && !trovato){
+                if(m[x][y] == 0) x++;
+                else trovato = true;
+            }
+            x--;
 
+            m[x][y] = player;
+
+            //modifica aspetto grafico
+            for(int i=0; i<vBtn.size();i++){
+                if(vBtn.get(i).getTransitionName().equals(String.valueOf("btn_"+x+"_"+y))){
+                    if(player == 1){
+                        vBtn.get(i).setBackgroundResource(R.color.coloreRosso);
+                        player = 2;
+                    }else{
+                        vBtn.get(i).setBackgroundResource(R.color.coloreVerdeFigo);
+                        player = 1;
+                    }
+                }
+                vBtn.get(i).setEnabled(false);
+            }
+
+
+            //controllo vittoria
+            if(controlloOrizzontale(x,y)){
+                //vince(gioc,"ORIZZONTALE");
+            }else if(controlloVerticale(x,y)){
+                //vince(gioc,"VERTICALE");
+            }else if(controlloDiagPrinc(x,y)){
+                //vince(gioc,"DIAGONALE PRINCIPALE");
+            }else if(controlloDiagSec(x,y)){
+                //vince(gioc, "DIAGONALE SECONDARIA");
+            }
+        }
+
+
+        private boolean controlloOrizzontale(int i, int j){
+            int cnt = 1;
+            int y = j +1;
+            while(y<COLS && m[i][y] == m[i][j]){
+                cnt++;
+                y++;
+            }
+
+            y = j-1;
+            while(y >= 0 && m[i][y] == m[i][j]){
+                cnt++;
+            }
+
+            if(cnt ==4) return true;
+            else return false;
+
+        }
+
+        private boolean controlloVerticale(int i, int j){
+            int cnt =1;
+            int x = i + 1;
+
+            //dal basso in giu'
+            while(x < ROWS && m[x][j] == m[i][j]){
+                cnt++;
+                x++;
+            }
+
+            if(cnt == 4) return true;
+            else return false;
+        }
+
+        private boolean controlloDiagPrinc(int i, int j){
+            int cnt = 1;
+            int x = i + 1;
+            int y = j + 1;
+
+            while(x < ROWS && y < COLS && m[x][y] == m[i][j]){
+                cnt++;
+                x++;
+                y++;
+            }
+
+            x = i - 1;
+            y = j - 1;
+            while(x >= 0 && y >= 0 && m[x][y] == m[i][j]){
+                cnt++;
+                x--;
+                y--;
+            }
+
+            if(cnt == 4) return true;
+            else return false;
+        }
+
+        private boolean controlloDiagSec(int i, int j){
+            int cnt = 1;
+            int x = i + 1;
+            int y = j - 1;
+
+            while(x < ROWS && y >= 0 && m[x][y] == m[i][j]){
+                cnt++;
+                x++;
+                y--;
+            }
+
+            x = i - 1;
+            y = j + 1;
+            while(x >= 0 && y < COLS && m[x][y] == m[i][j]){
+                cnt++;
+                x--;
+                y++;
+            }
+
+            if(cnt == 4) return true;
+            else return false;
         }
     }
 }
