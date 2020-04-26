@@ -10,7 +10,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class TrisActivity extends AppCompatActivity {
+public class
+TrisActivity extends AppCompatActivity {
     private static final String TAG = "TrisActivity";
 
     public int m[][]; // matrice interi
