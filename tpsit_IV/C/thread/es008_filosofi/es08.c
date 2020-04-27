@@ -28,8 +28,14 @@ void controllaPosate(int i){
     if(stato[i] == ATTESA && stato[DESTRA] != MANGIA && stato[SINISTRA] != MANGIA){
         stato[i] = MANGIA;
         printf("\nFILOSOFO %d, prendo le posate e mangio..." , i);
+        for(int k =0; k < N; k++){
+            if(k != i) pthread_mutex_unlock(&mutex_f[k]);
+        }
     }else{
         printf("\nFILOSOFO %d, forchette occupate, atteno per mangiare..." , i);
+        for(int k =0; k < N; k++){
+            if(k != i) pthread_mutex_lock(&mutex_f[k]);
+        }
     }
 }
 
@@ -66,7 +72,6 @@ void *filosofo(void *arg){
         //posa 
         posa(i);
     }
-
 }
 
 int main(int argc, char **argv){
