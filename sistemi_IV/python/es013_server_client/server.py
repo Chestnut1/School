@@ -10,21 +10,22 @@ import socket
 ip = '127.0.0.1'
 port = 5000
 
-
-
-
 def main():
     server = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
     server.bind((ip,port))
 
     while(True):
-        raw_data = server.recv(4096)
+        raw_data, address = server.recvfrom(4096)
 
         if str(raw_data,encoding="ascii") == ".shutdown":
             break
 
-        print('>> ' + str(raw_data))
+        #if(raw_data.decode() == ".shutdown"):
+
+        print(str(address)+'>> ' + str(raw_data))
+
+        server.sendto(raw_data, address)
 
     server.close()
 

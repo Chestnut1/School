@@ -7,8 +7,8 @@ This program create a client process that comunicate whit serevr.py in local hos
 
 import socket
 
-ip = '127.0.0.1'
-port = 5000
+ip_server = '127.0.0.1'
+port_server = 5000
 
 def main():
     client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -16,10 +16,14 @@ def main():
     while(True):
         msg = input(">>")
 
-        client.sendto(msg.encode(),(ip,port))
+        client.sendto(msg.encode(),(ip_server,port_server))
 
         if str(msg) == ".shutdown":
             break
+
+        raw_data = client.recv(4096)
+
+        print(">>" + raw_data.decode())
 
     client.close()
 
