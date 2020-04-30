@@ -34,7 +34,7 @@ TrisActivity extends AppCompatActivity {
         Intent intent;
         intent = getIntent();
         // in stringa -> intent.getStringExtra("g1");
-        lblTit.setText(intent.getStringExtra("g1") + " VS " + intent.getStringExtra("g2"));
+        lblTit.setText(  " VS " + intent.getStringExtra("g2"));
 
         // init giocatore
         g1 = true;
