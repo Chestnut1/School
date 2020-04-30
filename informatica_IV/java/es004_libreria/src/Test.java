@@ -1,7 +1,7 @@
 public class Test {
     public static void main (String[] args){
         //nome del file in cui andare a salvare
-        String nomefile = "libri.est";
+        String nomefile = "libreria.json";
         //est sarà = .bin per chi utilizza il file di byte
         //         = .json
         //         = .csv
@@ -21,7 +21,7 @@ public class Test {
         System.out.println(libreria);
 
         // salvataggio libreria su file METODO DA IMPLEMENTARE
-        libreria.salvaLibreria ("libreria.json");
+        libreria.salvaLibreria (nomefile);
 
    }
 }

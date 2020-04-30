@@ -30,8 +30,9 @@
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
-  <component name="RunManager" selected="Application.Test2">
+  <component name="RunManager" selected="Application.Test">
     <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Test" />
       <module name="es004_libreria" />
@@ -48,8 +49,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Test2" />
         <item itemvalue="Application.Test" />
+        <item itemvalue="Application.Test2" />
       </list>
     </recent_temporary>
   </component>
@@ -71,26 +72,26 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="666" y="266" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1587903949249" />
-    <state width="1877" height="155" key="GridCell.Tab.0.bottom" timestamp="1587910876859">
+    <state width="1877" height="237" key="GridCell.Tab.0.bottom" timestamp="1588258612260">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="155" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1587910876859" />
-    <state width="1877" height="155" key="GridCell.Tab.0.center" timestamp="1587910876859">
+    <state width="1877" height="237" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1588258612260" />
+    <state width="1877" height="237" key="GridCell.Tab.0.center" timestamp="1588258612259">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="155" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1587910876859" />
-    <state width="1877" height="155" key="GridCell.Tab.0.left" timestamp="1587910876858">
+    <state width="1877" height="237" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1588258612259" />
+    <state width="1877" height="237" key="GridCell.Tab.0.left" timestamp="1588258612259">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="155" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1587910876858" />
-    <state width="1877" height="155" key="GridCell.Tab.0.right" timestamp="1587910876859">
+    <state width="1877" height="237" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1588258612259" />
+    <state width="1877" height="237" key="GridCell.Tab.0.right" timestamp="1588258612259">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="155" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1587910876859" />
-    <state x="440" y="99" key="SettingsEditor" timestamp="1587903953707">
+    <state width="1877" height="237" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1588258612259" />
+    <state x="284" y="137" key="SettingsEditor" timestamp="1588258471357">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="440" y="99" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1587903953707" />
+    <state x="284" y="137" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1588258471357" />
     <state x="342" y="145" key="new project wizard" timestamp="1587914379485">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>

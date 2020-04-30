@@ -34,7 +34,6 @@ public class Libreria {
 
         JSONObject dettagliLibro = new JSONObject();
         JSONObject dettagliAurore = new JSONObject();
-        JSONObject autore = new JSONObject();
         JSONObject libro = new JSONObject();
         JSONArray listaLibri = new JSONArray();
         Vector<JSONObject> libreria = new Vector<JSONObject>();

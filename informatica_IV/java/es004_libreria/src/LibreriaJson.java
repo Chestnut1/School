@@ -42,6 +42,12 @@ public class LibreriaJson {
 
     private static void parseOgbjectLibro(JSONObject l)
     {
+
+        /*
+        * [{"libro":{"titolo":"Pinocchio","numero pagine":"150","autore":{"cognome":"Collodi","nome":"Carlo"}}},
+           {"libro":{"titolo":"Pollicino","numero pagine":"80","autore":{"cognome":"Perrault","nome":"Charles"}}},
+  {         "libro":{"titolo":"La bella addormentata nel bosco","numero pagine":"50","autore":{"cognome":"Perrault","nome":"Charles"}}}]
+        * */
         String nomeAutore;
         String cognomeAutore;
         String titolo;
