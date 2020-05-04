@@ -7,13 +7,15 @@ This program create a server process that recive an equation as string, compute 
 
 import socket
 
-server_ip = '127.0.0.1'
-server_port = 5000
+server_ip = '192.168.1.154'
+server_port = 55000
 
 def main():
     server = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)   #create socket with IPv4 datagrams, using UDP protocoll
 
     server.bind((server_ip, server_port))   #associate ip and port to the server process
+
+    print(f"\nServer bind success! \n\tport: {server_port} ip: {server_ip}!")
 
     while(True):
         raw_data, address = server.recvfrom(4096)   #saving data and address 
