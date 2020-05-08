@@ -29,4 +29,8 @@
 
     <!-- FORZA 4 ACTIVITY -->
     <string name="titleForza4">Forza 4!</string>
+
+    <!-- PRATO FIORITO -->
+    <string name="giocaPratoFiorito">Prato Fiorito!</string>
+    <string name="benvenutoPrato">Benvenuto, giocatore!</string>
 </resources>
