@@ -11,11 +11,22 @@
 
             <label for="lname">Cognome</label>
             <input type="text" id="sname" name="sname"><br>
-
-            <label for="sex">M</label>
-            <input type="radio" id="male" name="gender"><br>
-            <label for="sex">F</label>
-            <input type="radio" id="female" name="gender">
+            
+            <table id="formTable">
+                <tr>
+                    <td><label for="sex">M</label></td>
+                    <td><input type="radio" id="male" name="gender"><br></td>
+                </tr>
+                <tr id="trSposata">
+                    <td><label for="sex">F</label></td>
+                    <td><input type="radio" id="female" name="gender" onclick="showSposata()"></td>
+                    <td><input type="checkbox" id="myCheck" >Sposata</td>
+                </tr>
+            </table>
+            
+            
+            
+            
         </form>
     </body>
 </html>
