@@ -22,7 +22,7 @@ void setup() {
   printArray(Capture.list());
   
   //set the camera and start capturing
-  video = new Capture(this, 800,600, "Logitech HD Webcam C615" , 30);
+  video = new Capture(this, Capture.list()[1]);
   video.start();
   
   //at the start the image is equal tot null
