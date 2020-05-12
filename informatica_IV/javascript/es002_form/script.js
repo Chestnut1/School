@@ -7,5 +7,4 @@ function showSposata(){
     sposataList = document.createElement("input")
     sposataList.
     td.appendChild(sposataList)
-
 }
