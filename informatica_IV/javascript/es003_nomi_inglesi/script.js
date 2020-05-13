@@ -1,46 +1,26 @@
-function showName(){
-    switch(event.target.id){
+function showName(id){
+    switch(id){
         case "cpu":
-            document.getElementById("cpuEN").style.color = "#C6DABF"
+            document.getElementById("cpu").innerHTML = "Central Process Unit"
             break
         case "mobo":
-            document.getElementById("moboEN").style.color = "#C6DABF"
+            document.getElementById("mobo").innerHTML = "Motherboard"
             break
         case "socket":
-            document.getElementById("socketEN").style.color = "#C6DABF"
+            document.getElementById("socket").innerHTML = "Socket"
             break
         case "ram":
-            document.getElementById("ramEN").style.color = "#C6DABF"
+            document.getElementById("ram").innerHTML = "RAM"
             break
         case "aio":
-            document.getElementById("aioEN").style.color = "#C6DABF"
+            document.getElementById("aio").innerHTML = "Liquid Cooler"
             break
         case "gpu":
-            document.getElementById("gpuEN").style.color = "#C6DABF"
+            document.getElementById("gpu").innerHTML = "Graphic Card"
             break
     }
-    
 }
-function hideName(){
-    switch(event.target.id){
-        case "cpu":
-            document.getElementById("cpuEN").style.color("#114B5F")
-            break
-        case "mobo":
-            document.getElementById("moboEN").style.color("#114B5F")
-            break
-        case "socket":
-            document.getElementById("socketEN").style.color("#114B5F")
-            break
-        case "ram":
-            document.getElementById("ramEN").style.color("#114B5F")
-            break
-        case "aio":
-            document.getElementById("aioEN").style.color("#114B5F")
-            break
-        case "gpu":
-            document.getElementById("gpuEN").style.color("#114B5F")
-            break
-    }
-    
+
+function hideName(id){
+    document.getElementById(id).innerHTML = "?"
 }
