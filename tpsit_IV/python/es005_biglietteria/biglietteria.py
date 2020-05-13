@@ -13,8 +13,9 @@ def cassa(index):
     global tickets
     #cassa 1
     c1.acquire()
-    t = random.randrange(1,3)   #client's tickets
-    print(f"Hi, i'm {index} and i want to buy {t} tickets...")
+    t = random.randrange(1,10)   #client's tickets
+    log.info(f"Hi, i'm {index} and i want to buy {t} tickets...")
+    time.sleep(3)
     if tickets == 0:
         print("NO MORE TICKETS AVAILABLE!")
     elif tickets > 0 and t <= tickets:
@@ -37,13 +38,8 @@ def main():
 
     log.info("FATHER, creating threads...")
 
-    clients = []
-
     #creating threads
-    for i in range(0,customers):
-        clients.append(threading.Thread(target = cassa, args = (i+1, )))
-
-    #starting threads
+    clients =[threading.Thread(target = cassa, args = (i+1, )) for i in range(0,10)]    #list of threads
     for c in clients:
         c.start()
 
