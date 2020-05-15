@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="CNV" width="300" height="200" style="border: 2px solid darkslategrey;"></canvas>
+    <br>
+    <canvas id="CNV2" width="300" height="200" style="border: 2px solid #2f4f4f;"></canvas>
+    <br>
+
+    <input type="button" value="X:" id="x" onclick="">
+    <input type="button" value="Y:" id="y" onclick="">
+    <input type="button" value="S:" id="scala" onclick="">
+    <input type="button" value="R:" id="ruota" onclick="">
+
+    <script>
+        "use strict"
+
+        var ctx = CNV.getContext("2d")
+        ctx.moveTo(100,50)
+        ctx.lineTo(100,150)
+        ctx.lineTo(200,150)
+        ctx.lineTo(100,50)
+        
+        ctx.fillStyle = "green"
+        ctx.fill()  //interpreta la figura geometrica come chiusa
+        ctx.strokeStyle = "blue"
+
+        ctx.stroke()   
+        
+        var ctx2 = CNV2.getContext("2d")
+        window.onload = disegna;
+
+        function disegna(){
+            ctx2.beginPath()
+
+            ctx2.moveTo(0,0)
+            ctx2.lineTo(0,100)
+            ctx2.lineTo(100,100)
+            ctx.lineTo(0,0)
+            ctx2.fillStyle = "green"
+            ctx2.fill()
+        }
+
+        x.addEventListener("click", function(){
+            ctx2.clearRect(0,0,CNV2.width,CNV2.height)
+            ctx2.translate(20,0)   
+            disegna() 
+        })
+
+        y.addEventListener("click", function(){
+            ctx2.clearRect(0,0,CNV2.width,CNV2.height)
+            ctx2.translate(0,20)   
+            disegna() 
+        })
+
+        scala.addEventListener("click", function(){
+            ctx2.clearRect(0,0,CNV2.width,CNV2.height)
+            ctx2.scale(1.2,1.2)
+            disegna()
+        })
+
+        ruota.addEventListener("click", function(){
+            ctx2.clearRect(0,0,CNV2.width,CNV2.height)
+            ctx2.rotate(Math.PI / 6)
+            disegna()
+        })
+        
+         
+    </script>
+
+
+</body>
+</html>
