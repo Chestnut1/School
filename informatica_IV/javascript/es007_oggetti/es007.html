@@ -5,12 +5,33 @@
 </head>
 <body>
 <script>
+    
 	function Termometro(){
+        this.temps = new Array()
 		this.temperatura = 0
+        temps.push(0)
 		this.misura = function(temp){
    		 	if(temp && !isNaN(temp)){
                 this.temperatura = temp
+                temps.push(temp)
             }
+        }
+        this.storico = function(){
+            alert(temps)
+        }
+        this.celsius = function(){
+            return temperatura
+        }
+        this.fahrenheit = function(){
+            return temperatura*9/5
+        }
+        this.tipo = function(){
+            if(temperatura<=0) return "molto freddo"
+            else if(temperatura<=18) return "freddo"
+            else if (temperatura<=35) return "ottimale"
+            else if (temperatura<=45) return "caldo"
+            else return "molto caldo"
+
         }
     }
 
