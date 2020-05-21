@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        Tracciare un grafico cartesiano xy usando l'elemento HTML5 canvas, dopo aver preventivamente caricato i dati in un vettore.
+        Se è possibile disegnare un grafico a barre, sarà possibile disegnare anche un grafico cartesiano xy.
+    -->
+    <h1>Grafici Random</h1>
+    <h2>GRAFICO A BARRE</h2>
+    <canvas id="CNV" width="600" height="400" style="border: 2px solid darkslategrey;"></canvas><br>    
+    <h2>GRAFICO CON LINEE</h2>
+    <canvas id="lineCNV" width="600" height="400" style="border: 2px solid darkslategrey;"></canvas>     
+    <br>
+    <input type="text" value="200,100,300" id="data">
+    <button type="button" onclick="getData()"></button>
+
+    <script>
+        "use strict"
+
+        var ctx = CNV.getContext("2d")
+        let t = new Array()
+        let passo = 35
+        const h = 400
+
+        for(let i = 0; i < 10; i++){
+            t.push(Math.floor(Math.random()*10)+1)  //randomize numbers between 1 and 10
+        }
+
+        ctx.lineWidth = 10
+        ctx.strokeStyle = "red"
+
+        for(let i = 0; i < t.length; i++){
+            ctx.fillText(i,passo -15, h-5)
+            ctx.moveTo(passo,h)
+            ctx.lineTo(passo,h -t[i]*35)
+            ctx.stroke()
+            ctx.fillText(t[i],passo -15, h-t[i]*35-5)
+            passo+=40
+        }
+        
+        var linectx = lineCNV.getContext("2d")
+        let lineT = new Array()
+        var x = 0
+        var y = lineCNV.height/2
+        const MAX = 10
+        const MIN = 10
+        let step = 35 
+        var rnd
+
+        for(let i = 0; i < 10; i++){
+            rnd = Math.floor(MIN + (Math.random() *(MAX-MIN) + 1))
+            lineT.push(rnd)  //randomize numbers between 1 and 10
+        }
+        let max = lineT[0]
+        for(let i = 1; i < 10; i++){
+            if(Math.abs(t[i] > max)) max = Math.abs(t[i])
+        }
+
+        linectx.moveTo(x,y)
+        linectx.lineTo(x+lineCNV.width, y)
+        linectx.stroke()
+        const sc = (lineCNV.heigth/2 -10) / max
+
+        linectx.moveTo(x,y - lineT[0] * sc)
+        linectx.fillText(lineT[0], 5, y - lineT[0] * sc)
+        let pos = 0
+
+        for(let i = 1; i < 10; i++){
+            linectx.lineTo(step + pos, lineT[i], 5, y - lineT[i] * sc)
+            linectx.moveTo(step, lineT[i], 5, y - lineT[i] * sc)
+            pos += step
+            linectx.stroke()
+            
+        }
+    </script>
+</body>
+</html>
