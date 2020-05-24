@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+
+        Disegnare un grafico a torta sul canvas usando avendo a disposizione un vettore di record contenente i dati di vari tipi di merce.
+        Es3. Costruire un array di record per ottenere una struttura di dati non omogenei che possano contenere vari tipi di dato per ogni singola categoria.
+
+    -->
+
+    <h1>GRAFICO A TORTA</h1>
+    <canvas id="CNV" width="600" height="400" style="border: 2px solid darkslategrey;"></canvas><br>
+
+    <script>
+        "use strict"
+
+        var ctx = CNV.getContext("2d")
+
+        var x = 300
+        var y = 200
+        var sum = 0
+        var rnd
+
+        var values = new Array()
+        
+        for(let i = 0; i < 5; i++){
+            rnd = Math.floor(Math.random()*10)+1
+            //alert(rnd)
+            values.push(Math.floor(Math.random()*10)+1)
+
+        }
+
+        alert(values)
+
+        for(let i = 0; i < values.length; i++){
+            alert(values[i])
+            sum = sum + values[i]
+        }
+
+        var start = 0
+        var end = 0
+        alert(sum)
+
+        for(let i = 0; i < values.length; i++){
+            end = (Math.PI*2)/sum
+            ctx.arc(x,y,100,start,end,0)
+            ctx.stroke()
+            start = end
+        }
+
+
+
+    </script>
+    
+</body>
+</html>

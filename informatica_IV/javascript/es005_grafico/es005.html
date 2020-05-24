@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        Tracciare un grafico cartesiano xy usando l'elemento HTML5 canvas, dopo aver preventivamente caricato i dati in un vettore.
+        Se è possibile disegnare un grafico a barre, sarà possibile disegnare anche un grafico cartesiano xy.
+    -->
+
+    <canvas id="CNV" width="600" height="400" style="border: 2px solid darkslategrey;"></canvas><br>    
+    <canvas id="lineCNV" width="600" height="400" style="border: 2px solid darkslategrey;"></canvas>     
+    <br>
+    <input type="text" value="200,100,300" id="data">
+    <button type="button" onclick="getData()"></button>
+
+    <script>
+        "use strict"
+        var data_list = new Array()
+        function getData(data_list){
+            alert("bottone premuto")
+            
+            var d = document.getElementById("data").value
+            data_list = d.split(",")
+            for(let i =0; i < data_list.length; i++){
+                data_list[i] = parseInt(data_list[i])
+                //alert(data_list[i])
+            }
+            drawGBars(data_list)
+            drawGLines(data_list)
+        }
+
+        function drawGBars(data_list){
+            alert("ora disegno il grafico a barre")
+            var ctx = CNV.getContext("2d")
+            var offset = 10 //pixel di offset
+            var x = 0
+            var y = 0
+            alert(data_list)
+            
+            for(let i = 0; i < data_list.length; i++){
+                alert(data_list[i])
+                x+=offset
+                ctx.moveTo(x,400 - data_list[i])
+                ctx.lineWidth = 10;
+                ctx.lineTo(x,400)
+                ctx.stroke()
+                x = x + offset*2
+            }
+        }
+
+        function drawGLines(data_list){
+            alert("ora disegno il graficp a linee " + data_list.length)
+            alert(data_list)
+
+            var ctx = lineCNV.getContext("2d")
+            var offSet = 10
+            var x = 10
+            var y = 0
+            
+            ctx.moveTo(x,400-data_list[0])
+            for(let i = 1; i < data_list.length; i++){
+                alert("x: " + x + "Y: " + data_list[i])
+                x+=offSet
+                ctx.lineTo(x, 400-data_list[i])
+                ctx.stroke()
+                ctx.moveTo(x, 400-data_list[i])
+            }
+
+        }
+    </script>
+</body>
+</html>

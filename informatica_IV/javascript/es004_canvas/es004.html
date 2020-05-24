@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <!--
+
+        I canvas sono dei contenitori predisposti per contenere e visualizzare alcune immagini.
+
+    -->
+
+    
+
+    <canvas id="CNV" width="300" height="200" style="border: 2px solid darkslategrey;"></canvas>
+    <canvas id="CNV2" width="300" height="200" style="border: 2px solid #2f4f4f;"></canvas>
+    <canvas id="CNV3" width="300" height="200" style="border: 2px solid darkslategrey;"></canvas>
+
+    <script type="text/javascript">
+        "use strict"    //definisce la modalita' di scrittura del codice. In questo caso indica al browser di fare un'analisi puntuale sulle variabili.
+
+        var ctx = CNV.getContext("2d")
+
+        ctx.moveTo(50,50)   //settaggio punto di partenza
+        ctx.lineTo(250,50)  //traccio line da punto di partenza fino a 250,50
+
+        ctx.stroke()    //applichiamo le modifiche 
+
+        //curva
+        var ctx2 = CNV2.getContext("2d")
+
+        ctx2.arc(150, 100, 75, 0, Math.PI/2, 0)
+
+        ctx2.stroke()
+
+        //rettangolo
+        var ctx3 = CNV3.getContext("2d")
+
+        ctx3.strokeStyle = "#2f4f4f"    //define fill and stroke colors
+        ctx3.fillStyle = "#9h4b4c"
+
+        ctx3.strokeRect(50,50,200,100)
+        ctx3.fillRect(50,50,200,100)
+
+
+    </script>
+    
+</body>
+</html>

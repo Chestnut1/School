@@ -1,11 +1,16 @@
-import turtle
+import socket
 
-alice = turtle.Turtle()
 
-for k in range(4):
-    alice.forward(100)
-    alice.left(100)
-    k = k + 1
+server_ip="127.0.0.1"
+server_port=10000
 
-e = input()
-    
+client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
+
+def main():
+    while True:
+        msg = input(">>")
+        client.sendto(msg.encode(), (server_ip,server_port))
+
+if __name__ == "__main__":
+    main()
