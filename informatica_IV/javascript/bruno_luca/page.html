@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bruno Luca</title>
+    <script type="text/javaScript" src="Azioni.js"></script>
+</head>
+<body>
+    <table id="myTable">
+        <tr>
+            <td><p>Esercizio 1</p></td><td><button onclick="creaTabella()">andamento settimanale</button></td>
+        </tr>
+        <tr>
+            <td><p>Esercizio 2</p></td><td><button onclick="getMax()">ricerca valore massimo</button></td>
+        </tr>
+        <tr>
+            <td><p>Esercizio 3</p></td><td><button onclick="creaGrafico()">avisualizza canva</button></td>
+        </tr>
+    </table>
+
+    <canvas id="CNV" width="600" height="400" style="border: 2px solid darkslategrey;"></canvas><br>
+    
+    <script>
+        "use strict"
+
+        var azioni = new Azioni("google", "borsa di google", [1254,1593,1968,4188,4861,1886,2588])
+
+        function getMax(){
+            alert(azioni.getMax())
+        }
+
+        function creaTabella(){
+        //specificando il tag e la posizione  mi da tutti i componenti all'interno del tag body
+            var refBody = document.getElementsByTagName("body")[0];
+        //creo un elemento 
+            var tabella = document.createElement("table");
+            var riga, cella, btn, txt;
+        //all'interno del body inserisco un elemento html (in questo caso la tabella)
+            refBody.appendChild(tabella);
+            tabella.style.margin = "20px auto";
+            tabella.style.borderSpacing = "none";
+            for(let i=0;i<7;i++){
+                riga = document.createElement("tr");
+                tabella.appendChild(riga);
+                for(let j=0;j<2;j++){
+
+                    cella = document.createElement("td");
+                    riga.appendChild(cella);
+                    txt = document.createElement("p")
+
+                    if(j == 0){
+                        txt.innerHTML = azioni.giorni[i]
+                    }else{
+                        txt.innerHTML = azioni.valori[azioni.giorni[i]]
+                    }
+                    cella.appendChild(txt);
+                }
+            }
+        }
+
+        function creaGrafico(){
+            var ctx = CNV.getContext("2d")
+            let t = new Array()
+            let passo = 80
+            const h = 400
+            var max = azioni.getMax()
+            
+
+            for(let i = 0; i < 7; i++){
+                t.push(azioni.valori[azioni.giorni[i]])  //carico i valori nel vettore
+            }
+
+            ctx.lineWidth = 10
+            ctx.strokeStyle = "red"
+
+            for(let i = 0; i < t.length; i++){
+                ctx.fillText(azioni.giorni[i],passo -50, h-5)
+                ctx.moveTo(passo,h)
+                ctx.lineTo(passo,h-t[i]/20)
+                ctx.stroke()
+                ctx.fillText(t[i],passo -15, h-t[i]*35-5)
+                passo+=80
+            }
+        }
+    </script>
+
+</body>
+</html>
