@@ -15,7 +15,7 @@ def load_dictionary(file_name):
     return d
 
 def are_rotable(w1,w2):
-    
+    pass
 
 def main():
     pass

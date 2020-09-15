@@ -18,7 +18,7 @@ def main():
 
         client.sendall(msg.encode())
 
-        if msg == "close":
+        if msg == "quit":
             break
     
     client.close()
