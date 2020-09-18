@@ -13,21 +13,35 @@ public class CSVParser {
 
     public void readCSV(Vector<Prodotto> prodotti) throws IOException {
         String row;
+        int k = 0;
 
         BufferedReader csvReader = new BufferedReader(new FileReader(fileName));
         while ((row = csvReader.readLine()) != null) {
             String[] data = row.split(",");
-            // do something with the data
-            for(String value : data){
-                //
+            if (k == 0){
+                k++;
+            }else{
+                for(String value : data){
+                    //
+                }
             }
+            
 
         }
         csvReader.close();
     }
 
-    public void writeCSV(Prodotto p){
+    public void writeCSV(Prodotto p, String fileName){
+        FileWriter csvWriter = new FileWriter(fileName);
         
+        csvWriter.append("" + );
+        
+
+
+
+        csvWriter.flush();
+        csvWriter.close();
+
     }
 
 }
