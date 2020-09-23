@@ -86,4 +86,44 @@ public class CSVParser {
 
     }
 
+    public void editPrice(long productCode, float newPrice){
+
+        int k = 0;
+        String[] temp = null;
+        String[] data_split;
+        String data_attached;
+        String row;
+
+        BufferedReader csvReader = new BufferedReader(new FileReader(fileName));
+        while ((row = csvReader.readLine()) != null) {
+            data_split = row.split(",");
+            data_attached = "";
+
+            if(data_split[5].equals("" + productCode)){
+                data_split[8] = newPrice + "";
+            }
+            for(String data : data_split){
+                data_attached = data_attached + data + ",";
+            }
+
+            temp[k] = data_attached;
+
+            k++;
+        }
+
+        csvReader.close();
+
+        FileWriter csvWriter = null;
+        try {
+            csvWriter = new FileWriter(fileName,false);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        for(String line : temp){
+            csvWriter.write(line);
+        }
+        csvWriter.close();
+
+    }
+
 }
