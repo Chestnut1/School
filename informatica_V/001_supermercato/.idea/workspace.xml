@@ -43,7 +43,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../src" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -98,14 +98,18 @@
       <screen x="0" y="0" width="1368" height="882" />
     </state>
     <state x="141" y="99" width="1086" height="713" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1368.882@0.0.1368.882" timestamp="1600931814355" />
-    <state x="527" y="234" key="FileChooserDialogImpl" timestamp="1600931852062">
-      <screen x="0" y="0" width="1368" height="882" />
+    <state x="740" y="279" key="FileChooserDialogImpl" timestamp="1600958188732">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="527" y="234" key="FileChooserDialogImpl/0.0.1368.882@0.0.1368.882" timestamp="1600931852062" />
-    <state x="740" y="279" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1600882827356" />
+    <state x="740" y="279" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1600958188732" />
     <state x="166" y="18" key="SettingsEditor" timestamp="1600931872220">
       <screen x="0" y="0" width="1368" height="882" />
     </state>
     <state x="166" y="18" key="SettingsEditor/0.0.1368.882@0.0.1368.882" timestamp="1600931872220" />
+    <state x="342" y="149" key="new project wizard" timestamp="1600958217470">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="342" y="149" key="new project wizard/0.0.1920.1050@0.0.1920.1050" timestamp="1600958217470" />
   </component>
 </project>

@@ -2,7 +2,6 @@ import java.util.GregorianCalendar;
 
 public class Prodotto {
     private Reparto reparto;
-    private Categoria categoria;
     private Scaffale scaffale;
     private String prodotto;
     private String produttore;
@@ -16,9 +15,8 @@ public class Prodotto {
     private int numero_responsabile;
     private GregorianCalendar scadenza;
 
-    public Prodotto(Reparto reparto, Categoria categoria, Scaffale scaffale, String prodotto, String produttore,long codice, int quantita, Unitamisura unitamisura, float prezzo, Taglia taglia, int sconto, String responsabile, int numero_responsabile, GregorianCalendar scadenza){
+    public Prodotto(Reparto reparto, Scaffale scaffale, String prodotto, String produttore,long codice, int quantita, Unitamisura unitamisura, float prezzo, Taglia taglia, int sconto, String responsabile, int numero_responsabile, GregorianCalendar scadenza){
         this.reparto = reparto;
-        this.categoria = categoria;
         this.scaffale = scaffale;
         this.prodotto = prodotto;
         this.produttore = produttore;
@@ -33,9 +31,6 @@ public class Prodotto {
         this.scadenza = scadenza;
     }
 
-    public Categoria getCategoria() {
-        return categoria;
-    }
 
     public float getPrezzo() {
         return prezzo;
@@ -89,9 +84,6 @@ public class Prodotto {
         return unitamisura;
     }
 
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
-    }
 
     public void setCodice(long codice) {
         this.codice = codice;
@@ -149,7 +141,6 @@ public class Prodotto {
     public String toString() {
         return "\n\nProdotto\t" +
                 "reparto=\t" + reparto +
-                "categoria=\t" + categoria +
                 "scaffale=\t" + scaffale +
                 "prodotto=\t'" + prodotto + '\'' +
                 "produttore=\t'" + produttore + '\'' +

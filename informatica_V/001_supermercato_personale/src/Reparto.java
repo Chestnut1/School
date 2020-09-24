@@ -1,8 +1,6 @@
 public enum Reparto {
+    ABBIGLIAMENTO,
     ELETTRONICA,
     CASA,
-    FAMIGLIA,
-    SCUOLA,
-    ALIMENTARI,
-
+    CUCINA
 }
