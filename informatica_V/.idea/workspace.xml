@@ -19,7 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="84991497-dc25-43a8-8bc8-323574995732" name="Default Changelist" comment="" />
+    <list default="true" id="3e5bc763-04ab-4a2d-98c3-180651015dd9" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,14 +28,15 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="1ha8xVMrS1rWFK2KjV5hphTQaLX" />
+  <component name="ProjectId" id="1hwofYp4XxgqpmdJaiFydwAAdHZ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -43,37 +44,20 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/001_supermercato" />
+    <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
-  </component>
-  <component name="RunManager">
-    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="test" />
-      <module name="Supermercato" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.test" />
-      </list>
-    </recent_temporary>
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="84991497-dc25-43a8-8bc8-323574995732" name="Default Changelist" comment="" />
-      <created>1600238089536</created>
+      <changelist id="3e5bc763-04ab-4a2d-98c3-180651015dd9" name="Default Changelist" comment="" />
+      <created>1600931620807</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1600238089536</updated>
+      <updated>1600931620807</updated>
     </task>
     <servers />
   </component>
@@ -90,22 +74,25 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="440" y="99" key="#Project_Structure" timestamp="1600882959687">
-      <screen x="0" y="0" width="1920" height="1050" />
-    </state>
-    <state x="440" y="99" key="#Project_Structure/0.0.1920.1050@0.0.1920.1050" timestamp="1600882959687" />
-    <state x="141" y="99" width="1086" height="713" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600931814355">
+    <state x="140" y="96" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600931688834">
       <screen x="0" y="0" width="1368" height="882" />
     </state>
-    <state x="141" y="99" width="1086" height="713" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1368.882@0.0.1368.882" timestamp="1600931814355" />
-    <state x="527" y="234" key="FileChooserDialogImpl" timestamp="1600931852062">
+    <state x="140" y="96" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1368.882@0.0.1368.882" timestamp="1600931688834" />
+    <state x="447" y="142" key="#com.intellij.ide.util.MemberChooser" timestamp="1600934180073">
       <screen x="0" y="0" width="1368" height="882" />
     </state>
-    <state x="527" y="234" key="FileChooserDialogImpl/0.0.1368.882@0.0.1368.882" timestamp="1600931852062" />
-    <state x="740" y="279" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1600882827356" />
-    <state x="166" y="18" key="SettingsEditor" timestamp="1600931872220">
+    <state x="447" y="142" key="#com.intellij.ide.util.MemberChooser/0.0.1368.882@0.0.1368.882" timestamp="1600934180073" />
+    <state x="465" y="196" key="FileChooserDialogImpl" timestamp="1600931761082">
       <screen x="0" y="0" width="1368" height="882" />
     </state>
-    <state x="166" y="18" key="SettingsEditor/0.0.1368.882@0.0.1368.882" timestamp="1600931872220" />
+    <state x="465" y="196" key="FileChooserDialogImpl/0.0.1368.882@0.0.1368.882" timestamp="1600931761082" />
+    <state x="186" y="32" key="SettingsEditor" timestamp="1600932256466">
+      <screen x="0" y="0" width="1368" height="882" />
+    </state>
+    <state x="186" y="32" key="SettingsEditor/0.0.1368.882@0.0.1368.882" timestamp="1600932256466" />
+    <state x="110" y="120" width="1148" height="642" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1600931928493">
+      <screen x="0" y="0" width="1368" height="882" />
+    </state>
+    <state x="110" y="120" width="1148" height="642" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1368.882@0.0.1368.882" timestamp="1600931928493" />
   </component>
 </project>
