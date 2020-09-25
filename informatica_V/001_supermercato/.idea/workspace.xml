@@ -19,7 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="84991497-dc25-43a8-8bc8-323574995732" name="Default Changelist" comment="" />
+    <list default="true" id="84991497-dc25-43a8-8bc8-323574995732" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,11 +45,12 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RunManager">
     <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -103,9 +106,10 @@
     </state>
     <state x="527" y="234" key="FileChooserDialogImpl/0.0.1368.882@0.0.1368.882" timestamp="1600931852062" />
     <state x="740" y="279" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1600882827356" />
-    <state x="166" y="18" key="SettingsEditor" timestamp="1600931872220">
-      <screen x="0" y="0" width="1368" height="882" />
+    <state x="166" y="41" width="986" height="741" key="SettingsEditor" timestamp="1600975738732">
+      <screen x="0" y="27" width="1368" height="885" />
     </state>
     <state x="166" y="18" key="SettingsEditor/0.0.1368.882@0.0.1368.882" timestamp="1600931872220" />
+    <state x="166" y="41" width="986" height="741" key="SettingsEditor/0.27.1368.885@0.27.1368.885" timestamp="1600975738732" />
   </component>
 </project>
