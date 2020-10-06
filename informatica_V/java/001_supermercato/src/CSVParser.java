@@ -86,7 +86,7 @@ public class CSVParser {
 
     }
 
-    public void editPrice(long productCode, float newPrice){
+    public void editPrice(long productCode, float newPrice) throws IOException {
 
         int k = 0;
         String[] temp = null;
