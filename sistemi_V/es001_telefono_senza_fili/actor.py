@@ -8,7 +8,7 @@ def client(data):
     c = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 
     print(data)
-
+    #data = "Error: Traceback send failed"
     c.sendto(data.encode(),(server_ip,port))
     c.close()
 
