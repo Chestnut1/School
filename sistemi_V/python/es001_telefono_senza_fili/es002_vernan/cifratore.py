@@ -22,6 +22,9 @@ def cifratore():
 
 
     #print(alfabeto)
+    #CIAO
+
+    print(msg)
 
     coded_msg = ""
     coded_chiave = ""
@@ -30,13 +33,19 @@ def cifratore():
     for c in chiave:
         coded_chiave = coded_chiave + str(alfabeto[c])
 
+    print(coded_msg)
+
     summed_msg = ""
     for i in range(0,len(coded_msg)):
         summed_msg = summed_msg + str((int(coded_chiave[i]) + int(coded_msg[i])) % 21)
+
+    print(summed_msg)
     
     cifred_msg = ""
-    for i in range(0,len):
-        cifred_msg = cifred_msg + reverse_alfabeto(summed_msg[i])
+    for i in range(0,len(summed_msg)):
+        cifred_msg = cifred_msg + reverse_alfabeto[summed_msg[i]]
+
+    print(cifred_msg)
 
 
 
