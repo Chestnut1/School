@@ -4,6 +4,8 @@ Date: 15-10-2020
 Programma che cifra un messaggio con chiave ITISDELPOZZO
 """
 
+
+
 def cifratore():
 
     chiave = input("CHIAVE>> ")
@@ -40,28 +42,29 @@ def cifratore():
         summed_msg = summed_msg + str((int(coded_chiave[i]) + int(coded_msg[i])) % 21)
 
     print(summed_msg)
+
+    decifratore(summed_msg)
     
     cifred_msg = ""
-    for i in range(0,len(summed_msg)):
-        cifred_msg = cifred_msg + reverse_alfabeto[summed_msg[i]]
+    for i,c in enumerate(list(summed_msg)):
+        cifred_msg = cifred_msg + c
 
     print(cifred_msg)
-
-
-
-
-
-
-
-    
     #print(coded_msg)
 
 
-
-
-
 def decifratore(msg):
-    pass
+
+    alfabeto = {}
+    reverse_alfabeto = {}
+    for i in range (65,91):
+        alfabeto[chr(i)] = i - 65
+        reverse_alfabeto[i] = chr(i)
+
+    real_msg = ""
+    for c in msg:
+
+    
 
 
 
