@@ -1,93 +1,57 @@
 """
 Author: Bruno Luca
 Date: 15-10-2020
-Programma che cifra un messaggio con chiave ITISDELPOZZO
+Programma che cifra un messaggio dato dall'utente con chiave inserita da tastiera usando un cifrario di Vernan
 """
 
+number2char = {}
+char2number = {}
+for i in range (65,91):
+    char2number[chr(i)] = i - 65
+    number2char[i-65] = chr(i)
 
+def cifratore(msg = input("MESSAGGIO>> "),chiave = input("CHIAVE>> ")):
 
-def cifratore():
+    global number2char
+    global char2number
 
-    chiave = input("CHIAVE>> ")
-    msg = input("MESSAGGIO>> ")
+    while len(msg) > len(chiave):
+        print(f"key lenght must be at least {len(msg)}...\t current({len(chiave)})")
+        chiave = input("CHIAVE>> ")
+
     msg = msg.upper()
     chiave = chiave.upper()
 
-    #print(msg)
-
-    alfabeto = {}
-    reverse_alfabeto = {}
-    for i in range (65,91):
-        alfabeto[chr(i)] = i - 65
-        reverse_alfabeto[i-65] = chr(i)
-
-    print(alfabeto)
-
-    #msg = CIAO
-    print(msg)
-
-    coded_msg = []
-    coded_chiave = []
-    for c in msg:
-        coded_msg.append(str(alfabeto[c]))    #MSG = 28014
-    for c in chiave:
-        coded_chiave.append(str(alfabeto[c]))
-
-    print(coded_msg)
-    print(coded_chiave)
-
-    summed_msg = []
-    offsets = []
-    for i in range(0,len(coded_msg)):
-        summed_msg.append(str((int(coded_chiave[i]) + int(coded_msg[i])) % 21))
-        if (int(coded_chiave[i]) + int(coded_msg[i])) > 21:
-            offsets.append(1)
+    cifred_msg = ""
+    for i,c in enumerate(msg):
+        print(chiave[i])
+        if ord(c) in range(65,91):
+            cifred_msg = cifred_msg + number2char[(char2number[c] + char2number[chiave[i]])%26]
         else:
-            offsets.append(0)
+            cifred_msg = cifred_msg + c
 
-    print(summed_msg)
-
-    decifratore(summed_msg,chiave,offsets)
+    decifratore(cifred_msg,chiave)
 
 
-def decifratore(msg,chiave,offsets):
+def decifratore(msg,chiave):
 
-    alfabeto = {}
-    reverse_alfabeto = {}
-    for i in range (65,91):
-        alfabeto[chr(i)] = i - 65
-        reverse_alfabeto[i-65] = chr(i)
+    global number2char
+    global char2number
 
     print(f""" 
     cifratore has 
     msg = {msg}
     key = {chiave}
-    offsets = {offsets}
     """)
 
-    summed_msg = []
-
+    dec_msg = ""
     for i,c in enumerate(msg):
-        summed_msg.append(21 * offsets[i] + int(c))
-
-    print(f"decripted summed msg>> {summed_msg}")
-    
-    coded_msg = []
-    for i,c in enumerate(summed_msg):
-        coded_msg.append(alfabeto[chiave[i]] - int(c))
-
-    print(f"decripted coded msg>> {coded_msg}")
-    
-    msg = ""
-    for c in coded_msg:
-        if c < 0:
-            print(-c)
-            msg = msg + reverse_alfabeto[-c]
+        if ord(c) in range(65,91):
+            dec_msg = dec_msg + number2char[(char2number[c] - char2number[chiave[i]])%26]
         else:
-            msg = msg + reverse_alfabeto[c]
+            dec_msg = dec_msg + c
 
-    
-    print(f"decripted msg>> {msg}" )
+    print(f"DECRIPTED MSG>> {dec_msg}")
 
 
 if __name__ == "__main__":
