@@ -4,6 +4,8 @@ Date:02-11-2020
 Title: create a program that finds out the index(n) prime number 
 """
 
+import math
+
 def is_prime(n):
 
     """
@@ -15,7 +17,7 @@ def is_prime(n):
 
     #n is the prime number to find out
     bruteforce_numbers = []
-    for i in range (2,10):
+    for i in range (2,int(math.sqrt(n) + 1)):
         bruteforce_numbers.append(i)
     
     for number in bruteforce_numbers:
@@ -34,8 +36,8 @@ def find_number(n):
 
     current = 2
     count = n
+    
     while True:
-
         if is_prime(current):
             count = count -1
         if count == 0:
