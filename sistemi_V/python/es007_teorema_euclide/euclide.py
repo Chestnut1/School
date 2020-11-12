@@ -12,9 +12,7 @@ def euclide(a,b):
     """
 
     if b > a:
-        c = a
-        a = b
-        b = c
+        a,b = b,a
 
     while True:
         newa = a % b
