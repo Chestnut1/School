@@ -1,10 +1,16 @@
 """
 Author: Bruno Luca
 Date: 10-11-2020
-Title: euclide theoreme
+Title: euclide algorithm
 """
 
 def euclide(a,b):
+    """
+    a,b:        number to use
+    
+    returns:    MCD of a and b
+    """
+
     if b > a:
         c = a
         a = b
