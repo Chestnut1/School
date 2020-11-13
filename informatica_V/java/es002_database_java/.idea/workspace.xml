@@ -76,18 +76,19 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="722" y="226" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1050@0.0.1920.1050" timestamp="1603795426283" />
-    <state x="475" y="223" key="FileChooserDialogImpl" timestamp="1604050816489">
-      <screen x="0" y="0" width="1368" height="882" />
+    <state x="666" y="266" key="FileChooserDialogImpl" timestamp="1605258817217">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="475" y="223" key="FileChooserDialogImpl/0.0.1368.882@0.0.1368.882" timestamp="1604050816489" />
-    <state x="666" y="266" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1603795133858" />
+    <state x="666" y="266" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1605258817217" />
     <state x="440" y="99" key="SettingsEditor" timestamp="1605010387121">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="440" y="99" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1605010387121" />
-    <state x="109" y="61" key="new project wizard" timestamp="1604050819014">
-      <screen x="0" y="0" width="1368" height="882" />
+    <state x="153" y="73" key="new project wizard" timestamp="1605258830101">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="109" y="61" key="new project wizard/0.0.1368.882@0.0.1368.882" timestamp="1604050819014" />
+    <state x="153" y="73" key="new project wizard/0.0.1920.1050@0.0.1920.1050" timestamp="1605258830101" />
   </component>
 </project>

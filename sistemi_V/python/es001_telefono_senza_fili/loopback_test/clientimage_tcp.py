@@ -1,12 +1,13 @@
 import socket
 import os
+import config 
 
 server_ip = "127.0.0.1"
-port = 8000
+port = 9000
 
 def client():
 
-    with open("img2.jpg",'rb') as f:
+    with open("img.png",'rb') as f:
 
         print(os.listdir())
         input()
@@ -16,17 +17,17 @@ def client():
         print(f"connected. sending img.png ...")
 
         k = 0
-        data = f.read()
+        data = f.read(config.BUFFER_SIZE)
         while data:
             
             c.sendall(data)
-            data = f.read()
+            data = f.read(config.BUFFER_SIZE)
             print(f"sending data {k}")
             k = k + 1
     
         print("image sent.")
 
-        c.send("close".encode())
+        c.sendall()
 
     c.close()
     

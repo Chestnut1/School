@@ -1,10 +1,11 @@
 import socket
+import config
 
 server_ip = "127.0.0.1"
-port = 8000
+port = 9000
 
 def server():
-    file_name = "copy_image.jpg"
+    file_name = "copy_image.png"
 
     s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
     s.bind((server_ip,port))
@@ -16,19 +17,19 @@ def server():
 
     done = False
     c = 0
-    while not done:
-        line = conn.recv(40960000)
 
+    line = conn.recv(config.BUFFER_SIZE)
+    while line != config.END_IMG_STRING.encode():
         try:
-            if line.decode() == "exit":
-                print("finished")
-                done = True
-        except:
             print(f"writing image{c}")
 
             f.write(line)
+            c = c + 1
+        except:
+            print("cant write image")
+        line = conn.recv(config.BUFFER_SIZE)
 
-        c = c + 1
+        
 
     print("image copied")
 
