@@ -1,14 +1,3 @@
-import math
-import config
-import utility
-
-number2char = {}
-char2number = {}
-special_chars = [" ","!","@","#","$","%","^","&","*","(",")","-","_","=","+","[","]","{","}","\\","|",":",";","'","\"",",","<",".",">","/","?","`","~"]
-for i in range (65,91):
-    char2number[chr(i)] = i - 65
-    number2char[i-65] = chr(i)
-
 def is_prime(n):
 
     """
@@ -97,50 +86,3 @@ def generate_keys():
         if d in d_list:
             break
     return n, c, p, q, m, d
-
-def main():
-    n, c, p, q, m, d = generate_keys()
-
-    print(f"""
-        PUBLIC KEYS
-            -n:\t{n}
-            -c:\t{c}
-
-        PRIVATE KEYS
-            -p:\t{p}
-            -q:\t{q}
-            -m:\t{m}
-            -d:\t{d}
-    """)
-    
-    msg = input("MSG>> ")
-    msg = msg.upper()
-
-    cifred_msg = []
-    number_msg = []
-
-    #CIPHER
-    for a in msg:
-        if a in special_chars: 
-            number_msg.append(a)
-            cifred_msg.append(a)
-        else:
-            number_msg.append(char2number[a])
-            #print(char2number[a])
-            cifred_msg.append(int((char2number[a]**c) % n))
-            
-    print(f"number msg = {number_msg}")
-    print(f"cifred msg = {cifred_msg}")
-
-    #DECIPHERER
-    decifred_msg = ""
-    for b in cifred_msg:
-        if b in special_chars:
-            decifred_msg = decifred_msg + b
-        else:
-            decifred_msg = decifred_msg + number2char[int((b**d) % n)]
-            
-    print(decifred_msg)
-
-if __name__ == "__main__":
-    main()
