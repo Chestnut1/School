@@ -3,7 +3,6 @@ Author: Bruno Luca
 Date: 02-11-2020
 """
 
-
 import os
 import math
 import sqlite3
@@ -44,8 +43,6 @@ def load_data():
         for t in raw_data:  #raw_data = [(1, '5+6*(454483+3447)') , ....]
             operations[t[1]] = t[0]
 
-
-
 class CLientThread(threading.Thread):
     def __init__(self,ip,port,connection,index):
         self.index = index
@@ -78,12 +75,6 @@ class CLientThread(threading.Thread):
 
         self.connection.sendall("exit".encode())
 
-            
-
-            
-
-    
-
 def main():
 
     load_data()
@@ -111,11 +102,6 @@ def main():
         client_count = client_count + 1
 
         client.start()
-
-    
-
-
-
 
 if __name__ == "__main__":
     main()
