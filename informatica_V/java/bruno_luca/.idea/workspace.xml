@@ -19,7 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8fdaaa07-8d79-4a20-b075-d36cea7f6aa4" name="Default Changelist" comment="" />
+    <list default="true" id="cb8b5713-b162-407e-b154-856416f305b5" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,7 +35,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
-  <component name="ProjectId" id="1kPn1rnl7mYRPTmRBhaVSyV3Ego" />
+  <component name="ProjectId" id="1l69iuPK8xOk1As5BNHI3dfkdHy" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -43,19 +43,33 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../es003_statement" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="verifica" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8fdaaa07-8d79-4a20-b075-d36cea7f6aa4" name="Default Changelist" comment="" />
-      <created>1605610886190</created>
+      <changelist id="cb8b5713-b162-407e-b154-856416f305b5" name="Default Changelist" comment="" />
+      <created>1606906806063</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1605610886190</updated>
+      <updated>1606906806063</updated>
     </task>
     <servers />
   </component>
@@ -72,17 +86,33 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="666" y="266" key="FileChooserDialogImpl" timestamp="1606899060672">
+    <state x="440" y="99" key="#Project_Structure" timestamp="1606906826023">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="666" y="266" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1606899060672" />
-    <state x="440" y="99" key="SettingsEditor" timestamp="1605611148279">
+    <state x="440" y="99" key="#Project_Structure/0.0.1920.1050@0.0.1920.1050" timestamp="1606906826023" />
+    <state x="666" y="266" key="FileChooserDialogImpl" timestamp="1606906843887">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="440" y="99" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1605611148279" />
-    <state x="342" y="145" key="new project wizard" timestamp="1606906803116">
+    <state x="666" y="266" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1606906843887" />
+    <state width="1877" height="651" key="GridCell.Tab.0.bottom" timestamp="1606912030158">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="342" y="145" key="new project wizard/0.0.1920.1050@0.0.1920.1050" timestamp="1606906803116" />
+    <state width="1877" height="651" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1606912030158" />
+    <state width="1877" height="651" key="GridCell.Tab.0.center" timestamp="1606912030158">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="651" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1606912030158" />
+    <state width="1877" height="651" key="GridCell.Tab.0.left" timestamp="1606912030158">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="651" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1606912030158" />
+    <state width="1877" height="651" key="GridCell.Tab.0.right" timestamp="1606912030158">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="651" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1606912030158" />
+    <state x="440" y="99" key="SettingsEditor" timestamp="1606906847211">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="440" y="99" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1606906847211" />
   </component>
 </project>

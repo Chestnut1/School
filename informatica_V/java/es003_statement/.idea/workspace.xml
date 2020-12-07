@@ -43,7 +43,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../libreria/sqlite-jdbc-3.7.15-m1.jar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../verifica" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -86,10 +86,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="666" y="266" key="FileChooserDialogImpl" timestamp="1605537693025">
+    <state x="666" y="266" key="FileChooserDialogImpl" timestamp="1606908379413">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="666" y="266" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1605537693025" />
+    <state x="666" y="266" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1606908379413" />
     <state width="1877" height="287" key="GridCell.Tab.0.bottom" timestamp="1605541680899">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -110,9 +110,9 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="440" y="99" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1605537696436" />
-    <state x="342" y="145" key="new project wizard" timestamp="1605610881283">
+    <state x="342" y="145" key="new project wizard" timestamp="1606908374815">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="342" y="145" key="new project wizard/0.0.1920.1050@0.0.1920.1050" timestamp="1605610881283" />
+    <state x="342" y="145" key="new project wizard/0.0.1920.1050@0.0.1920.1050" timestamp="1606908374815" />
   </component>
 </project>
