@@ -15,7 +15,7 @@ def index():                # decoratore. Per accedere alla pagina associata all
 
 @app.route("/pagina2/")     # http://127.0.0.1:5000/pagina2/ 
 def index2():
-    return render_template("C:/Users/lucab/Desktop/repo/School/sistemi_V/python/es007_flask_base/template/index.html")
+    return render_template("f1/index.html")
 
 
 
