@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Es04 Registrazione</title>
+		<script type="application/javascript" src="jquery.js"></script>
+		<script type="application/javascript" src="index.js"></script>
+	</head>
+	<body>
+		<form id="form1" action="registrazione.php" method="get">
+			Nome:<input type="text" name="txtNome" id="txtNome" placeholder="Inserisci qui il tuo nome"/>
+			</br>
+			Indirizzo di studio:
+			</br><input type="radio" name="rdbIndirizzo" value="Informatica"/>Informatica
+			</br><input type="radio" name="rdbIndirizzo" value="Meccanica"/>Meccanica
+			</br><input type="radio" name="rdbIndirizzo" value="Elettrotecnica"/>Elettrotecnica
+			</br><input type="radio" name="rdbIndirizzo" value="Liceo"/>Liceo
+			</br>
+			Hobbies:
+			</br><input type="checkbox" name="chkHobbies[]" value="Sport"/>Sport
+			</br><input type="checkbox" name="chkHobbies[]" value="Musica"/>Musica
+			</br><input type="checkbox" name="chkHobbies[]" value="Cinema"/>Cinema
+			</br><input type="checkbox" name="chkHobbies[]" value="Lettura"/>Lettura
+			</br>
+			Città di residenza:
+			</br>	
+			<select name="lstCitta">
+				<option value="1">Fossano</option>
+				<option value="2">Cuneo</option>
+				<option value="3">Torino</option>
+				<option value="4">Alba</option>
+			</select>
+			</br>
+			Segni particolari:
+			</br>
+			<textarea name="txtSegni"></textarea>
+			</br>
+			Come hai scoperto la scuola:
+			</br>
+			<select name="lstScoperta[]" multiple size="4">
+				<option value="Giornali">Giornali</option>
+				<option value="Amici">Amici</option>
+				<option value="Web">Web</option>
+				<option value="Altro">Altro</option>
+			</select>
+
+			<br>
+
+			<input type="button" value="Invia" id="btnInvia">
+            <!--<input type="submit" formaction="registrazione.php" formmethod="get" value="Invia"/>-->
+        </form>
+        <br>
+        <div id="msg" style="color: red"></div>
+    </body>
+</html>

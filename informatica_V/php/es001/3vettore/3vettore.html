@@ -1,0 +1,23 @@
+<html>
+	<head>
+		<title>Calcolatrice php</title>
+		<script>
+			window.onload = function(){
+				document.getElementById("n1").value=1;
+				document.getElementById("n2").value=2;
+				document.getElementById("n3").value=3;
+			}
+		</script>
+	</head>
+	<body>
+		<form name="f1" action="3vettore.php" method="get" >
+			n1:&nbsp;&nbsp;<input type="text" id="n1" name="n1" value="" /></br></br>
+			n2:&nbsp;&nbsp;<input type="text" id="n2" name="n2" value="" /></br></br>
+			n3:&nbsp;&nbsp;<input type="text" id="n3" name="n3" value="" /></br></br>
+			<input type="reset" name="btnAnnulla" value="Annulla"/>
+			<input type="submit" name="btnSomma" value="+"/>
+			<input type="submit" name="btnDifferenza" value="-"/>
+			<input type="submit" name="btnMoltiplica" value="*"/>
+		</form>
+	</body>
+</html>
