@@ -18,6 +18,11 @@ ad esempio “Mountain Bike: Atala telaio: 26 velocità 10 km/h”
 using namespace std;
 
 class Bike{
+    private:
+        char size;
+        string brand;
+        float currentSpeed;
+
     public:
         Bike(char size, string brand, float currentSpeed){
             this -> size = (size == 'S' || size == 'M' || size == 'L') ? size : 'M';
@@ -50,14 +55,13 @@ class Bike{
         void printState(){
             cout << "CURRENT SPEED: \t " + to_string(currentSpeed) + "Km/h\n";
         }
-
-    private:
-        char size;
-        string brand;
-        float currentSpeed;
 };
 
 class MTB : Bike{
+    private:
+        int changeSX;
+        int changeDX;
+
     public:
         MTB(char size, string brand, float currentSpeed, int changeSX, int changeDX) : Bike(size, brand, currentSpeed){
             this -> changeSX = (changeSX >= 1) ? changeSX : 1;
@@ -73,12 +77,6 @@ class MTB : Bike{
         void printState(){
             cout << "CURRENT SPEED: \t " + to_string(getCurrentSpeed()) + " Km/h\n";
         }
-
-        
-
-    private:
-        int changeSX;
-        int changeDX;
 };
 
 int main() {
