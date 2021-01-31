@@ -30,6 +30,7 @@ def login():
         
         return render_template("login.html", error = error)
     
+@app.route("/secret")
 def secret():
     return "This is a scerte page."
 
