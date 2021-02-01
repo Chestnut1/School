@@ -24,7 +24,7 @@ def login():
         completion = validate(usr,pwd)
 
         if completion:
-            return redirect(url_for("secret"))
+            return "This is a secret page."#redirect(url_for("secret"))
         else:
             error  = "Invalid Credentials. Please try again."
         
@@ -41,4 +41,4 @@ def validate(username,password):
         return False
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", debug = True)
+    app.run(host="127.0.0.1", debug = False)
