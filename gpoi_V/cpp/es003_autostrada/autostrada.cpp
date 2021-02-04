@@ -8,7 +8,7 @@ PROGETTARE UN CASELLO AUTOSTRADALE
 
 
 #include <iostream>
-#include<string>    
+#include <string>    
 using namespace std;
 
 class Veicolo{
