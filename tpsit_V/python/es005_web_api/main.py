@@ -44,4 +44,46 @@ def home():
 def api_all():
     return jsonify(books)
 
+#aggiungo alla web api la ricerca per id del libro
+@app.route("/api/v1/resources/books", methods = ["GET"])
+def api_id():
+    result = []
+
+    if 'id' in request.args:
+        id = int(request.args['id']) 
+
+        with sqlite3.connect('static/library.db') as conn:
+            cursor = conn.cursor()
+            cursor.execute(f"SELECT title, author, year FROM books WHERE id = {id}")
+            
+            data = cursor.fetchone()
+            print(list(data)) 
+            result.append(list(data)) 
+
+    elif 'title'in request.args:
+        title = request.args['title']
+        print(title)
+        with sqlite3.connect('static/library.db') as conn:
+            cursor = conn.cursor()
+            cursor.execute(f"SELECT id, author, year FROM books WHERE title = '{title}'")
+            
+            data = cursor.fetchone()
+            print(data) 
+            result.append(data) 
+    else:
+        return "Error: No id or title field provided. Please specify one of them."
+
+    
+
+    
+
+    """
+    for book in books:
+        if book['id'] == id:
+            result.append(book)
+            break
+    """
+    
+    return jsonify(result)
+
 app.run()
