@@ -20,26 +20,27 @@ def control_page():
 def move_bot():
     #alphabot = Alphabot()
     direction = request.args['dir']
+    time = request.args['time']
     if request.method == "GET":
 
         if direction == "W":
             #alphabot.forward()
-            return("Going foreward")
+            return(f"Going foreward for {time} seconds")
             time.sleep(3)
             #alphabot.stop()
         elif direction == "A":
             #alphabot.left()
-            return("Going left")
+            return(f"Going left for {time} seconds")
             time.sleep(3)
             #alphabot.stop()
         elif direction == "S":
             #alphabot.backward()
-            return("Going backward")
+            return(f"Going backward for {time} seconds")
             time.sleep(3)
             #alphabot.stop()
         elif direction == "D":
             #alphabot.right()
-            return("Going right")
+            return(f"Going right for {time} seconds")
             time.sleep(3)
             #alphabot.stop()
         
