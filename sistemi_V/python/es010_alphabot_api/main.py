@@ -7,8 +7,8 @@ Date: 26-01-2021
 
 from flask import Flask,render_template, redirect, request
 from flask.helpers import url_for
-#import alphabot.py
 import time
+import requests
 
 app = Flask(__name__)
 
