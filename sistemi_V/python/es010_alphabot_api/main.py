@@ -6,10 +6,12 @@ Date: 26-01-2021
 """
 
 import sqlite3
+from typing import ByteString
 from flask import Flask,render_template, redirect, request, jsonify
 from flask.helpers import url_for
 import time
 import requests
+import datetime
 
 app = Flask(__name__)
 
@@ -20,7 +22,6 @@ def control_page():
 
 @app.route("/", methods = ['GET','POST'])
 def get_path():
-    print("dentro movimento")
     start = request.form['start']
     end = request.form['end']
     if request.method == "POST":
@@ -42,6 +43,42 @@ def get_path():
             for percorso in percorsi[0]:
                 paths.append({"id" : percorsi[0].index(percorso), "path" : percorso})
                 print(paths)
+
+            #variabili di stato dell'ostacolo resettate
+            precSX = 0  #stato precedente sensore sinistro
+            precDX = 0  #stato precedente sensore destro 
+            currSX = 0  #stato attuale sensore sinistro
+            currDX = 0  #stato attuale sensore destro
+
+            #controllo sugli ostacoli
+            for i in range(20):
+                
+                #pin dei sensori
+                irDX = 16
+                irSX = 19
+
+                #setting dei sensori
+                GPIO.setmode(GPIO.BCM)
+                GPIO.setwarnings(False)
+                GPIO.setup(DR,GPIO.IN,GPIO.PUD_UP)
+                GPIO.setup(DL,GPIO.IN,GPIO.PUD_UP)
+
+                #leggo lo stato attuale dei sensori
+                currDX = GPIO.input(irDX)
+                currSX = GPIO.input(irSX)
+
+                #controllo se ci sono stati dei cambiamenti
+                if currDX != precDX or currSX != precSX:
+                    if precSX 
+                        
+
+                    
+
+                
+                precSX = currSX
+                precDX = currDX
+
+                time.sleep(500)
         
             return jsonify(paths)
 

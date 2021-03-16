@@ -7,7 +7,6 @@ Date: 12-03-2021
 
 from flask import Flask,render_template, redirect, jsonify
 from flask.helpers import url_for
-#import alphabot.py
 import time
 import requests
 import json
@@ -42,7 +41,7 @@ def most_popular():
 
 @app.route("/ubisoft", methods = ["GET"])
 def best_of_ubisoft():
-    return("ubisoft")
+    return("Implementare giochi ubisoft")
 
 if __name__ == "__main__":
     app.run(host="127.0.0.1", debug = True)
