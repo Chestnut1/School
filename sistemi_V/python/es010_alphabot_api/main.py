@@ -20,8 +20,16 @@ def control_page():
     print("dentro control page")
     return render_template("index.html")
 
+
+#variabili di stato dell'ostacolo resettate
+precSX = 0  #stato precedente sensore sinistro
+precDX = 0  #stato precedente sensore destro 
+currSX = 0  #stato attuale sensore sinistro
+currDX = 0  #stato attuale sensore destro
+
 @app.route("/", methods = ['GET','POST'])
 def get_path():
+    global precDX, precSX, currDX, currSX
     start = request.form['start']
     end = request.form['end']
     if request.method == "POST":
@@ -44,11 +52,7 @@ def get_path():
                 paths.append({"id" : percorsi[0].index(percorso), "path" : percorso})
                 print(paths)
 
-            #variabili di stato dell'ostacolo resettate
-            precSX = 0  #stato precedente sensore sinistro
-            precDX = 0  #stato precedente sensore destro 
-            currSX = 0  #stato attuale sensore sinistro
-            currDX = 0  #stato attuale sensore destro
+            
 
             #controllo sugli ostacoli
             for i in range(20):
@@ -64,19 +68,24 @@ def get_path():
                 GPIO.setup(DL,GPIO.IN,GPIO.PUD_UP)
 
                 #leggo lo stato attuale dei sensori
-                currDX = GPIO.input(irDX)
+                currDX = GPIO.input(irDX)   #0 - 1
                 currSX = GPIO.input(irSX)
 
                 #controllo se ci sono stati dei cambiamenti
                 if currDX != precDX or currSX != precSX:
-                    if precSX 
+                    if not currDX and not currSX:
+                        stato = "SCOMPARSO"
+                    elif currSX and not currDX:
+                        statoOstacolo = "SINISTRA"
+                    elif not currSX and currDX:
+                        statoOstacolo = "DESTRA"
                         
+                    elif currSX and currDX:
+                        statoOstacolo = "CENTRO"
 
-                    
 
-                
-                precSX = currSX
-                precDX = currDX
+                cursor.execute(f"INSERTO INTO ostacoli (sensoreSX,sensoreDX, posizioneOstacolo) values ({currSX},{currDX},'{statoOstacolo}')")        
+                        
 
                 time.sleep(500)
         
