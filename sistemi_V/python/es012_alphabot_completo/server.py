@@ -1,38 +1,27 @@
 """
 
-Author: Bruno Luca
-Date: 26-01-2021
+    SERVER ALPHABOT
 
 """
 
+
 import sqlite3
-from typing import ByteString
-from flask import Flask,render_template, redirect, request, jsonify
+from flask import Flask, json,render_template, redirect, request, jsonify
 from flask.helpers import url_for
 import time
 import requests
-import datetime
+from flask import request
 
 app = Flask(__name__)
 
-@app.route("/")
-def control_page():
-    print("dentro control page")
-    return render_template("index.html")
-
-
-#variabili di stato dell'ostacolo resettate
-precSX = 0  #stato precedente sensore sinistro
-precDX = 0  #stato precedente sensore destro 
-currSX = 0  #stato attuale sensore sinistro
-currDX = 0  #stato attuale sensore destro
-
-@app.route("/", methods = ['GET','POST'])
+@app.route("/percorsi", methods = ['GET'])
 def get_path():
     global precDX, precSX, currDX, currSX
-    start = request.form['start']
-    end = request.form['end']
-    if request.method == "POST":
+    start = request.args["start"]
+    end = request.args["end"]
+
+    print(f"{start}\n{end}")
+    if request.method == "GET":
         
         with sqlite3.connect("static/percorsi.db") as conn:
             cursor = conn.cursor()
@@ -52,8 +41,10 @@ def get_path():
                 paths.append({"id" : percorsi[0].index(percorso), "path" : percorso})
                 print(paths)
 
-            
+            return jsonify(paths)
 
+            
+            """
             #controllo sugli ostacoli
             for i in range(20):
                 
@@ -87,8 +78,14 @@ def get_path():
 
                 time.sleep(500)
         
-            return jsonify(paths)
+            """
 
+def obstacles():
+    with sqlite3.connect("static/percorsi.db") as conn:
+        cursor = conn.cursor()
+
+        cursor.execute(f"INSERTO INTO ostacoli (sensoreSX,sensoreDX, posizioneOstacolo) values ({currSX},{currDX},'{statoOstacolo}')")  
 
 if __name__ == "__main__":
     app.run(host="127.0.0.1", debug = True)
+
