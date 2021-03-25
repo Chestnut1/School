@@ -28,7 +28,7 @@ def main():
         9:"Bruno Francesco",
         10:"Bruno Luca",
         11:"Cuniberti Andrea",
-        12:"Degiovannini Alessia",
+        12:"De Giovannini Alessia",
         13:"Gabutti Irene",
         14:"Genovese Tommaso",
         15:"Giavelli Luca",
