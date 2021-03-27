@@ -14,20 +14,77 @@ from flask.helpers import url_for
 import time
 import requests
 import json
+import Alphabot
+from threading import Thread
+
+class controllerSensori (Thread):
+    def __init__(self, pinSX, pinDX):   #passo i pin dei sensori
+        Thread.__init__(self)
+        self.pinSX = pinSX
+        self.pinDX = pinDX
+
+        #stato dei sensori
+        precDX = 0
+        precSX = 0
+        currDX = 0
+        currSX = 0
+
+        #setting dei sensori
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setwarnings(False)
+        GPIO.setup(DR,GPIO.IN,GPIO.PUD_UP)
+        GPIO.setup(DL,GPIO.IN,GPIO.PUD_UP)
+
+    def run(self):
+        #leggo lo stato attuale dei sensori
+        self.currDX = GPIO.input(self.pinDX)   #0 - 1
+        self.currSX = GPIO.input(self.pinSX)
+
+        #controllo se ci sono stati dei cambiamenti
+        if self.currDX != self.precDX or self.currSX != self.precSX:
+            if not self.currDX and not self.currSX:
+                statoOstacolo = "SCOMPARSO"
+            elif self.currSX and not self.currDX:
+                statoOstacolo = "SINISTRA"
+            elif not self.currSX and self.currDX:
+                statoOstacolo = "DESTRA"
+            elif self.currSX and self.currDX:
+                statoOstacolo = "CENTRO"
+            
+            #invio lo stato aggiornato dell'ostacolo
+            request.get(f"http://127.0.0.1:5000/ostacoli?status={statoOstacolo}") 
+        
+        #aggiorno lo stato attuale dei sensori
+        self.precSX = self.currSX
+        self.precDX = self.currDX     
+
+        time.sleep(500) #ripeto ogni 500 ms
 
 def main():
-    url = f"http://127.0.0.1:5000/percorsi?start=info1&end=aula3.0"
+    inizio = input("INIZIO >> ")
+    fine = input("FINE   >> ")
 
-    r = requests.get(url)
-    if r.status_code == 200:
+    url = f"http://127.0.0.1:5000/percorsi?start={inizio}&end={fine}"
+
+    r = requests.get(url)   #invio la get
+    if r.status_code == 200:    #tutto OK
         print("richiesta riuscita")
 
+    #leggo i percorsi possibili dalla API
     paths = []
-    for d in json.loads(r.text):
+    for d in json.loads(r.text):    #trasformo la stringa in un dizionario
         paths.append(d['path'])
 
     print(paths)
 
+    bot = Alphabot()
+    bot.stop()
+
+    #avvio un thread per la lettura dei sensori
+    listener = controllerSensori(19,16)
+    listener.start()
+
+    #parsing del path
     for path in paths: 
         index = 0
         while index < len(path):
@@ -37,64 +94,36 @@ def main():
                 while index < len(path) and path[index].isnumeric():
                     distance = distance + path[index]
                     index = index + 1
-                t.forward(int(distance)/2)
+                bot.forward()
+                time.sleep(distance/10)
+                bot.stop()
 
             elif path[index] == 'S':
                 index = index + 1
                 while index < len(path) and path[index].isnumeric():
                     distance = distance + path[index]
                     index = index + 1
-                t.backward(int(distance)/2)
+                bot.backward()
+                time.sleep(distance/10)
+                bot.stop()
 
             elif path[index] == 'A':
                 index = index + 1
                 while index < len(path) and path[index].isnumeric():
                     distance = distance + path[index]
                     index = index + 1
-                t.left(int(distance))
+                bot.left()
+                time.sleep(distance/10)
+                bot.stop()
 
             elif path[index] == 'D':
                 index = index + 1
                 while index < len(path) and path[index].isnumeric():
                     distance = distance + path[index]
                     index = index + 1
-                t.right(int(distance))
-    
-    #controllo sugli ostacoli
-    for i in range(20):
-        
-        #pin dei sensori
-        irDX = 16
-        irSX = 19
-
-        #setting dei sensori
-        GPIO.setmode(GPIO.BCM)
-        GPIO.setwarnings(False)
-        GPIO.setup(DR,GPIO.IN,GPIO.PUD_UP)
-        GPIO.setup(DL,GPIO.IN,GPIO.PUD_UP)
-
-        #leggo lo stato attuale dei sensori
-        currDX = GPIO.input(irDX)   #0 - 1
-        currSX = GPIO.input(irSX)
-
-        #controllo se ci sono stati dei cambiamenti
-        if currDX != precDX or currSX != precSX:
-            if not currDX and not currSX:
-                stato = "SCOMPARSO"
-            elif currSX and not currDX:
-                statoOstacolo = "SINISTRA"
-            elif not currSX and currDX:
-                statoOstacolo = "DESTRA"
-            elif currSX and currDX:
-                statoOstacolo = "CENTRO"
-
-        request.get(f"http://127.0.0.1:5000/ostacoli?sx={currSX}&dx={currDX}&status=")      
-
-        time.sleep(500)
-    
-
-
-
+                bot.right()
+                time.sleep(distance/10)
+                bot.stop()
 
 if __name__ == "__main__":
     main()

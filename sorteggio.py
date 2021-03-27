@@ -37,7 +37,7 @@ def main():
         18:"Lovera Asia",
         19:"Nardi Simone",
         20:"Shekhawat Karni",
-        21:"Van Cleeff",
+        21:"Van Cleeff Jacopo",
     }
 
     createTournament(classe)
