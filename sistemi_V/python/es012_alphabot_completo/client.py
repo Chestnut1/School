@@ -1,6 +1,7 @@
 """
 
-Author: Bruno Luca
+Author: Bruno Luca, Van Cleeff Jacopo, Genovese Tommaso
+
 Date: 23-03-2021
 
 Client alphabot
@@ -24,10 +25,10 @@ class controllerSensori (Thread):
         self.pinDX = pinDX
 
         #stato dei sensori
-        precDX = 0
-        precSX = 0
-        currDX = 0
-        currSX = 0
+        self.precDX = 0
+        self.precSX = 0
+        self.currDX = 0
+        self.currSX = 0
 
         #setting dei sensori
         GPIO.setmode(GPIO.BCM)
@@ -61,69 +62,71 @@ class controllerSensori (Thread):
         time.sleep(500) #ripeto ogni 500 ms
 
 def main():
-    inizio = input("INIZIO >> ")
-    fine = input("FINE   >> ")
+    while True:
+            
+        inizio = input("INIZIO >> ")
+        fine = input("FINE   >> ")
 
-    url = f"http://127.0.0.1:5000/percorsi?start={inizio}&end={fine}"
+        url = f"http://127.0.0.1:5000/percorsi?start={inizio}&end={fine}"
 
-    r = requests.get(url)   #invio la get
-    if r.status_code == 200:    #tutto OK
-        print("richiesta riuscita")
+        r = requests.get(url)   #invio la get
+        if r.status_code == 200:    #tutto OK
+            print("richiesta riuscita")
 
-    #leggo i percorsi possibili dalla API
-    paths = []
-    for d in json.loads(r.text):    #trasformo la stringa in un dizionario
-        paths.append(d['path'])
+        #leggo i percorsi possibili dalla API
+        paths = []
+        for d in json.loads(r.text):    #trasformo la stringa in un dizionario
+            paths.append(d['path'])
 
-    print(paths)
+        print(paths)
 
-    bot = Alphabot()
-    bot.stop()
+        bot = Alphabot()
+        bot.stop()
 
-    #avvio un thread per la lettura dei sensori
-    listener = controllerSensori(19,16)
-    listener.start()
+        #avvio un thread per la lettura dei sensori
+        listener = controllerSensori(19,16)
+        listener.start()
 
-    #parsing del path
-    for path in paths: 
-        index = 0
-        while index < len(path):
-            distance = ''
-            if path[index] == 'W':
-                index = index + 1
-                while index < len(path) and path[index].isnumeric():
-                    distance = distance + path[index]
+        #parsing del path
+        for path in paths: 
+            index = 0
+            while index < len(path):
+                distance = ''
+                if path[index] == 'W':
                     index = index + 1
-                bot.forward()
-                time.sleep(distance/10)
-                bot.stop()
+                    while index < len(path) and path[index].isnumeric():
+                        distance = distance + path[index]
+                        index = index + 1
+                    bot.forward()
+                    time.sleep(distance/10)
+                    bot.stop()
 
-            elif path[index] == 'S':
-                index = index + 1
-                while index < len(path) and path[index].isnumeric():
-                    distance = distance + path[index]
+                elif path[index] == 'S':
                     index = index + 1
-                bot.backward()
-                time.sleep(distance/10)
-                bot.stop()
+                    while index < len(path) and path[index].isnumeric():
+                        distance = distance + path[index]
+                        index = index + 1
+                    bot.backward()
+                    time.sleep(distance/10)
+                    bot.stop()
 
-            elif path[index] == 'A':
-                index = index + 1
-                while index < len(path) and path[index].isnumeric():
-                    distance = distance + path[index]
+                elif path[index] == 'A':
                     index = index + 1
-                bot.left()
-                time.sleep(distance/10)
-                bot.stop()
+                    while index < len(path) and path[index].isnumeric():
+                        distance = distance + path[index]
+                        index = index + 1
+                    bot.left()
+                    time.sleep(distance/10)
+                    bot.stop()
 
-            elif path[index] == 'D':
-                index = index + 1
-                while index < len(path) and path[index].isnumeric():
-                    distance = distance + path[index]
+                elif path[index] == 'D':
                     index = index + 1
-                bot.right()
-                time.sleep(distance/10)
-                bot.stop()
+                    while index < len(path) and path[index].isnumeric():
+                        distance = distance + path[index]
+                        index = index + 1
+                    bot.right()
+                    time.sleep(distance/10)
+                    bot.stop()
 
 if __name__ == "__main__":
     main()
