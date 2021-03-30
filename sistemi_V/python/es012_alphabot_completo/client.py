@@ -19,10 +19,11 @@ import Alphabot
 from threading import Thread
 
 class controllerSensori (Thread):
-    def __init__(self, pinSX, pinDX):   #passo i pin dei sensori
+    def __init__(self, pinSX, pinDX, delay):   #passo i pin dei sensori
         Thread.__init__(self)
         self.pinSX = pinSX
         self.pinDX = pinDX
+        self.delay = delay
 
         #stato dei sensori
         self.precDX = 0
@@ -33,33 +34,38 @@ class controllerSensori (Thread):
         #setting dei sensori
         GPIO.setmode(GPIO.BCM)
         GPIO.setwarnings(False)
-        GPIO.setup(DR,GPIO.IN,GPIO.PUD_UP)
-        GPIO.setup(DL,GPIO.IN,GPIO.PUD_UP)
+        GPIO.setup(pinDX,GPIO.IN,GPIO.PUD_UP)
+        GPIO.setup(pinSX,GPIO.IN,GPIO.PUD_UP)
 
     def run(self):
-        #leggo lo stato attuale dei sensori
-        self.currDX = GPIO.input(self.pinDX)   #0 - 1
-        self.currSX = GPIO.input(self.pinSX)
+        while True:
+            #leggo lo stato attuale dei sensori
+            self.currDX = GPIO.input(self.pinDX)   #0 - 1
+            self.currSX = GPIO.input(self.pinSX)
 
-        #controllo se ci sono stati dei cambiamenti
-        if self.currDX != self.precDX or self.currSX != self.precSX:
-            if not self.currDX and not self.currSX:
-                statoOstacolo = "SCOMPARSO"
-            elif self.currSX and not self.currDX:
-                statoOstacolo = "SINISTRA"
-            elif not self.currSX and self.currDX:
-                statoOstacolo = "DESTRA"
-            elif self.currSX and self.currDX:
-                statoOstacolo = "CENTRO"
+            #controllo se ci sono stati dei cambiamenti
+            if self.currDX != self.precDX or self.currSX != self.precSX:
+                if not self.currDX and not self.currSX:
+                    statoOstacolo = "SCOMPARSO"
+                    print("OSTACOLO SOMPARSO")
+                elif self.currSX and not self.currDX:
+                    statoOstacolo = "SINISTRA"
+                    print("OSTACOLO SINISTRA")
+                elif not self.currSX and self.currDX:
+                    statoOstacolo = "DESTRA"
+                    print("OSTACOLO DESTRA")
+                elif self.currSX and self.currDX:
+                    statoOstacolo = "CENTRO"
+                    print("OSTACOLO CENTRO")
+                
+                #invio lo stato aggiornato dell'ostacolo
+                request.get(f"http://127.0.0.1:5000/ostacoli?status={statoOstacolo}") 
             
-            #invio lo stato aggiornato dell'ostacolo
-            request.get(f"http://127.0.0.1:5000/ostacoli?status={statoOstacolo}") 
-        
-        #aggiorno lo stato attuale dei sensori
-        self.precSX = self.currSX
-        self.precDX = self.currDX     
+            #aggiorno lo stato attuale dei sensori
+            self.precSX = self.currSX
+            self.precDX = self.currDX     
 
-        time.sleep(500) #ripeto ogni 500 ms
+            time.sleep(self.delay)
 
 def main():
     while True:
@@ -84,7 +90,7 @@ def main():
         bot.stop()
 
         #avvio un thread per la lettura dei sensori
-        listener = controllerSensori(19,16)
+        listener = controllerSensori(19,16,500)
         listener.start()
 
         #parsing del path
@@ -92,7 +98,7 @@ def main():
             index = 0
             while index < len(path):
                 distance = ''
-                if path[index] == 'W':
+                if path[index] == 'F':
                     index = index + 1
                     while index < len(path) and path[index].isnumeric():
                         distance = distance + path[index]
@@ -101,7 +107,7 @@ def main():
                     time.sleep(distance/10)
                     bot.stop()
 
-                elif path[index] == 'S':
+                elif path[index] == 'B':
                     index = index + 1
                     while index < len(path) and path[index].isnumeric():
                         distance = distance + path[index]
@@ -110,7 +116,7 @@ def main():
                     time.sleep(distance/10)
                     bot.stop()
 
-                elif path[index] == 'A':
+                elif path[index] == 'L':
                     index = index + 1
                     while index < len(path) and path[index].isnumeric():
                         distance = distance + path[index]
@@ -119,7 +125,7 @@ def main():
                     time.sleep(distance/10)
                     bot.stop()
 
-                elif path[index] == 'D':
+                elif path[index] == 'R':
                     index = index + 1
                     while index < len(path) and path[index].isnumeric():
                         distance = distance + path[index]

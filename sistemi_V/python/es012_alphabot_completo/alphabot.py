@@ -25,7 +25,7 @@ class AlphaBot(object):
         self.PWMA.start(40) #50
         self.PWMB.start(40) #50
 
-    def forward(self):
+    def backward(self):
         GPIO.output(self.IN1,GPIO.HIGH)
         GPIO.output(self.IN2,GPIO.LOW)
         GPIO.output(self.IN3,GPIO.LOW)
@@ -37,7 +37,7 @@ class AlphaBot(object):
         GPIO.output(self.IN3,GPIO.LOW)
         GPIO.output(self.IN4,GPIO.LOW)
 
-    def backward(self):
+    def forward(self):
         GPIO.output(self.IN1,GPIO.LOW)
         GPIO.output(self.IN2,GPIO.HIGH)
         GPIO.output(self.IN3,GPIO.HIGH)
