@@ -28,12 +28,12 @@ def main():
         print(r.text)
         operation = json.loads(r.text)['espression']
         op_id = json.loads(r.text)['id']
-        result = eval(operation)
+        result = eval(operation)    #calcolo l'operaizone
 
         
         setresult = f"http://127.0.0.1:5000/setresult?result={result}&id={op_id}"
 
-        r = request.get(setresult)
+        r = requests.get(setresult)
         if r.status_code == 200:    #tutto OK
             print("risultato inviato")
 

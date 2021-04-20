@@ -56,12 +56,11 @@ def get_an_operations():
 @app.route("/setresult")
 def set_a_result():
     result = request.args["result"]     #prendo l'ip dalla GET
-    op_id = request.args["op_id"]
+    op_id = request.args["id"]
 
     print(result)
     print(op_id)
 
-    #controllo se l'ip può ricevere l'operazione
     with sqlite3.connect("static/operations.db") as conn:
         cursor = conn.cursor()
 
@@ -70,8 +69,10 @@ def set_a_result():
         cursor.fetchall()
 
         #aggiungo il risultato alla tabella
-        cursor.execute(f"UPDATE operazioni SET calcolata = 1 WHERE id = {op_id}")
-        cursor.fetchall(f"INSERT INTO risultati (risultato, id_esp) values ({result},{op_id})")
+        cursor.execute(f"INSERT INTO risultati (risultato, id_esp) values ({result},{op_id})")
+        cursor.fetchall()
+    
+    return jsonify({"status" : "ok"})
 
     
 
