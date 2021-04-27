@@ -14,16 +14,9 @@ di una misurazione e si stampano le statistice delle misurazioni corrispettive
 """
 
 
-import sqlite3
-from typing import Mapping
-from flask import Flask, json,render_template, redirect, request, jsonify
-from flask.helpers import url_for
-import time
+from flask import json
 import requests
-from flask import request
 import datetime
-
-app = Flask(__name__)
 
 def main():
     while True:
