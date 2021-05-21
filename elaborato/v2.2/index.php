@@ -13,36 +13,40 @@
     <div class="wrapper">
         <section class="form signup">
             <header>Realtime Chat App</header>
-            <form action="#">
+            <form action="singup.php" enctype="multipart/form-data">
                 <div class="error-txt">This is an error message!</div>
                 <div class="name-details">
                     <div class="field input">
                         <label>First name</label>
-                        <input type="text" placeholder="First name">
+                        <input type="text" name="fname" placeholder="First name" required>
                     </div>
                     <div class="field input">
                         <label>Last name</label>
-                        <input type="text" placeholder="Last name">
+                        <input type="text" name="lname" placeholder="Last name" required>
                     </div>
                 </div>
                 <div class="field input">
+                    <label>Insert your birthday</label>
+                    <input type="date" name="date" required>
+                </div>
+                <div class="field input">
                     <label>Insert your Email</label>
-                    <input type="text" placeholder="Email">
+                    <input type="email" name="email" placeholder="Email" required>
                 </div>
                 <div class="field input">
                     <label>Username</label>
-                    <input type="text" placeholder="Choose a username">
+                    <input type="text" name="uname" placeholder="Choose a username" required>
                 </div>
                 <div class="field input">
                     <label>Insert your Password</label>
-                    <input type="password" placeholder="Password">
+                    <input type="password" name="pwd" placeholder="Password" required>
                 </div>
                 <div class="field image">
                     <label>Profile Image</label>
-                    <input type="file" placeholder="Profile Image">
+                    <input type="file"  name="imgprofile" placeholder="Profile Image" required>
                 </div>
                 <div class="field button">
-                    <input type="submit" value="Continue to chat">
+                    <input type="submit" id="continueBtn" value="Continue to chat">
                 </div>
             </form>
             <div class="link">Already signed up? <a href="login.html">Login now</a></div>
