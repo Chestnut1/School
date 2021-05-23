@@ -1,0 +1,137 @@
+body {
+    background-image: none;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+.container {
+    margin: 60px auto;
+    background-color: yellowgreen;
+    padding: 0;
+    border-radius: 7px;
+}
+
+.profile-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 25%;
+}
+
+.settings-tray {
+    background-color: #eee;
+    padding: 10px 15px;
+    border-radius: 7px;
+
+    i {
+        margin-top: 10px;
+        font-size: 25px;
+        color: gray;
+        margin-left: 14px;
+        transition: 0.3s;
+
+        &:hover {
+            color: black;
+            cursor: pointer;
+        }
+    }
+}
+
+.search-box {
+    background-color: #fafafa;
+    padding: 10px 13px;
+
+    .input-wrapper {
+        background-color: #fff;
+        border-radius: 40px;
+    }
+
+    i {
+        color: gray;
+        vertical-align: middle;
+        margin-left: 7px;
+
+        &:hover {
+            color: black;
+            cursor: pointer;
+        }
+    }
+}
+
+input {
+    border: none;
+    border-radius: 40px;
+    width: 80%;
+
+    &::placeholder {
+        color: #e3e3e3;
+        font-weight: 300;
+        margin-left: 20px;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.friend-drawer {
+    padding: 10px 15px;
+    display: flex;
+    vertical-align: baseline;
+    background-color: #fff;
+    transition: 0.4s ease;
+    
+
+    &--grey {
+        background-color: #eee;
+    }
+
+    &:hover {
+        background-color: #eee;
+        cursor: pointer;
+    }
+
+    .text {
+        margin-left: 12px;
+        width: 70%;
+    }
+
+    h6 {
+        margin-top: 6px;
+        margin-bottom: 0px;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    .time {
+        color: grey;
+    }
+}
+
+hr {
+    margin: 5px auto;
+    width: 90%;
+}
+
+.received-msg{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 80%;
+    opacity: 0.5;
+}
+
+
+.chat-bubble{
+    padding: 10px 14px;
+    background: #eee;
+    margin: 10px 30px;
+    border-radius: 9px;
+    position: relative;
+    animation: fadeIn 1s ease-in;
+
+    &:after
+}

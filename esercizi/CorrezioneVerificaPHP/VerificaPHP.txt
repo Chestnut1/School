@@ -1,0 +1,25 @@
+Esercizio di verifica di laboratorio di PHP
+===========================================
+Creare un DB MySQL "agenziaMatrimoniale" con 2 tabelle:
+1) tabella Utenti: id (chiave, autoincrement), nome (varchar[25]), sesso (boolean), eta (int), altezza (float), peso (float), nickname (varchar[10]), password (varchar[16]), amministratore (boolean);
+2) tabella Abbinamenti: id (chiave, autoincrement), idUtente1 (foreign key), idUtente2 (foreign key), giudizio1 (int da 0 a 100%), giudizio2 (int da 0 a 100%), scartato (boolean);
+3) mettere alcuni dati fittizi quali Paperino, Paperina, Gastone, Brigitta, Paperone, Amelia, nella tabella Candidati. Prevedere l'amministratore PuppetMaster.
+
+Scrivere una pagina di login con annesso meccanismo di sessione.
+Implementare le seguenti funzioni:
+1) se l'utente è amministratore, viene mandato su pagina dove può:
+- visualizzare candidati ordinati per sesso e nome, eventualmente in tabella HTML;
+- generare in automatico i record per i possibili abbinamenti uomo-donna;
+- cancellare in blocco (imposta scartato=true, no delete) abbinamenti con media giudizi < 50% oppure un giudizio < 25%;
+- visualizza le coppie con una media giudizi al di sopra di un valore imputabile a tastiera;
+- pulsante logout per chiudere la sessione e tornare alla pagina di login.
+2) se l'utente è utente normale, viene mandato su pagina dove può:
+- vedere tabella HTML con, per ogni riga, dati candidato e, in fondo o in cima alla riga, casella di testo o spinner per immissione % gradimento;
+- pulsante logout per chiudere la sessione e tornare alla pagina di login.
+3) esportare database MySQL fatto come file di testo .sql e zipparlo insieme alle pagine HTML e PHP preparate; inoltrare lo zip sia su Classroom che per email all'insegnante.
+
+Facoltativi:
+1) uso del cookie per gestire il timeout della sessione, se utente inattivo per più di 5 minuti viene chiusa sessione.
+2) disabilitazione della funzione di generazione abbinamenti se la tabella abbinamenti non è vuota.
+3) funzioni di gestione anagrafica clienti per l'amministratore.
+4) upload di una fotografia dell'utente, da visualizzare insieme agli altri dati.
