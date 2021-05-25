@@ -1,0 +1,7 @@
+0 plastic
+1 paper
+2 bio
+3 glass
+4 battery
+5 iron
+6 other
